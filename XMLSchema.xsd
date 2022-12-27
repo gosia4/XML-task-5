@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:p="http://www.example.com"
+		   xmlns:c="http://www.example.com"
+		   targetNamespace="http://www.example.com"
+		   elementFormDefault="qualified"
+		   >
+	<xs:include schemaLocation="cNamespace.xsd"/>
+	<xs:include schemaLocation="pNamespace.xsd"/>
+	<!--<xs:import schemaLocation="pNamespace.xsd" namespace="http://www.example.com"/>
+	<xs:import schemaLocation="cNamespace.xsd" namespace="http://www.example.com"/>
+-->
+	
+	<xs:element name="composers">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="documentInformation" type="c:documentInformationType" maxOccurs="1"/>
+				<xs:element name="composer" type="c:composerType" maxOccurs="unbounded"/>
+				<xs:element name="publisher" type="p:publisherType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:key name="publisher_id">
+				<xs:selector xpath="./p:publisher"/>
+				<xs:field xpath="@id"/>
+			</xs:key>
+			<xs:keyref name="id_reference_piece" refer="p:publisher_id">
+				<xs:selector xpath="./c:composer/c:pieces/c:piece/c:publisher"/>
+				<xs:field xpath="@nr"/>
+			</xs:keyref>
+			<xs:keyref name="id_reference_book" refer="p:publisher_id">
+				<xs:selector xpath="./c:composer/c:books/c:book/c:publisher"/>
+				<xs:field xpath="@nr"/>
+			</xs:keyref>
+	</xs:element>
+	
+	<xs:complexType name="documentInformationType">
+		<xs:sequence>
+			<xs:element name="author">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element type="c:studentName" name="student_name"/>
+						<xs:element type="c:surnameType" name="surname"/>
+						<xs:element type="c:studentIDType" name="studentID"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element type="xs:date" name="creationDate"/>
+			<xs:element type="xs:date" name="lastModificationDate"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="composerType">
+			<xs:sequence>
+				<xs:element name="person" type="c:personType"/>
+				<xs:element type="c:first_nameType" name="first_name" maxOccurs="3" minOccurs="1"/>
+				<xs:element type="c:surnameType" name="surname"/>
+				<xs:element type="c:nationalityType" name="nationality"/>
+				<xs:element type="c:lifespanType" name="lifespan"/>
+				<xs:element type="c:addressType" name="address"/>
+				<xs:element type="c:piecesType" name="pieces"/>
+				<xs:element type="c:booksType" name="books"/>
+			</xs:sequence>
+		<xs:attributeGroup ref="c:composerAttributes"/>
+	</xs:complexType>
+
+
+	<xs:complexType name="piecesType">
+			<xs:sequence>
+				<xs:element name="piece" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element type="c:pieceNameType" name="name"/>
+							<xs:element type="c:tonationType" name="tonation"/>
+							<xs:element type="c:opType" name="op" minOccurs="0" maxOccurs="1"/>
+							<xs:element type="c:noType" name="nr" minOccurs="0" maxOccurs="1"/>
+							<xs:element type="c:levelType" name="level"/>
+							<xs:element type="c:instrumentsType" name="instruments"/>
+							<xs:element type="c:publisherPriceType" name="publisher"/>
+						</xs:all>
+						<xs:attribute type="c:noType" name="nr" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+
+	
+		<xs:complexType name="booksType">
+			<xs:sequence>
+				<xs:element name="book" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="c:contentType" name="content"/>
+							<xs:element type="c:pagesType" name="amount_of_pages"/>
+							<xs:element type="c:ISBNtype" name="ISBN"/>
+							<xs:element type="c:publisherPriceType" name="publisher">
+								<!--<xs:complexType>
+									<xs:all>
+										<xs:element type="p:publisherType" name="publisher"/>
+										<xs:element type="c:priceType" name="price"/>
+									</xs:all>
+								</xs:complexType>-->
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute type="c:noType" name="no" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+
+	
+
+	<xs:attributeGroup name="composerAttributes">
+		<xs:attribute name="id" type="c:composerIdType" use="required"/>
+		<xs:attribute name="born" type="c:composerBornType" use="required"/>
+	</xs:attributeGroup>
+
+	<xs:complexType name="personType">
+			<xs:attribute type="c:genderType" name="gender" use="optional"/>
+		</xs:complexType>
+
+
+
+	<xs:complexType name="addressType">
+		<xs:choice>
+			<xs:element name="city" type="c:cityType"/>
+			<xs:element name="ZIPcode" type="c:ZIPcodeType"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="publisherPriceType">
+		<xs:sequence>
+			<xs:element type="c:priceCurType" name="price"/>
+		</xs:sequence>
+		<xs:attribute type="p:publisherIdType" name="nr" use="required"/>
+	</xs:complexType>
+
+	
+	
+	<xs:complexType name="publisherType">
+		<xs:sequence>
+			<xs:element type="p:publisherNameType" name="namePublisher"/>
+		</xs:sequence>
+		<xs:attribute type="p:publisherIdType" name="id" use="required"/>
+	</xs:complexType>
+
+
+
+</xs:schema>

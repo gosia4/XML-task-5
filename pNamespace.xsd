@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.com"
+    xmlns:p="http://www.example.com"
+>
+	
+	<!--publisher namespace-->
+
+		<xs:simpleType name="publisherIdType">
+			<xs:restriction base="xs:integer">
+				<xs:minInclusive value="1"/>
+				<xs:maxInclusive value="20"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+
+		<xs:simpleType name="publisherNameType">
+			<xs:restriction base="xs:string">
+				<xs:pattern value="([A-Z]([A-Z])*([a-z]*) ?)+" />
+				<!--<xs:pattern value="[A-Z][a-z]* |[A-Z]* ([A-Z][a-z]* |[A-Z]*)*"/>
+				-->
+				<xs:minLength value="2"/>
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+</xs:schema>

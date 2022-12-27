@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:c="http://www.example.com"
+	targetNamespace="http://www.example.com"
+>
+
+		<xs:simpleType name="studentName">
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[A-Z][a-z]*"/>
+				<xs:minLength value="1" />
+				<xs:maxLength value="30" />
+			</xs:restriction>
+		</xs:simpleType>
+	
+
+		<xs:simpleType name="studentIDType">
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{6}"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+		<xs:simpleType name="first_nameType">
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[A-Z][a-z]*"/>
+				<xs:minLength value="1"/>
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+
+	
+		<xs:simpleType name="surnameType">
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[A-Z][a-z]*(-[A-Z][a-z]*)*"/>
+				<xs:minLength value="1" />
+				<xs:maxLength value="30" />
+			</xs:restriction>
+		</xs:simpleType>
+
+
+
+
+	<xs:simpleType name="genderType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="male" />
+			<xs:enumeration value="female" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	
+	<xs:simpleType name="composerIdType">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="composerBornType">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minInclusive value="1600"/>
+			<xs:maxInclusive value="2000"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+		<xs:simpleType name="nationalityType">
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[A-Z][a-z]*([A-Z][a-z]*)*"/>
+				<xs:minLength value="2"/>
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+		<xs:simpleType name="lifespanType">
+			<xs:restriction base="xs:integer">
+				<xs:minInclusive value="15"/>
+				<xs:maxInclusive value="120"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+
+	<xs:simpleType name="ZIPcodeType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{2}-[0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="cityType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z][a-z]*( [A-Z][a-z]*)*"/>
+			<xs:minLength value="2"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+		<xs:simpleType name="pieceNameType">
+			<xs:restriction base="xs:normalizedString">
+				<xs:whiteSpace value="collapse"/>
+				<xs:pattern value="([A-Z]([a-z]*) ?)+" />
+				
+				<xs:minLength value="2"/>
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+
+
+	<xs:simpleType name="tonationType">
+		<xs:restriction base="xs:string">
+			<!--<xs:pattern value="[a-z]+|[A-Z][a-z]*-minor|major" />
+			-->
+			<xs:minLength value="7"/>
+			<xs:maxLength value="9"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+	<xs:simpleType name="opType">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="noType">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:positiveInteger">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="200"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:positiveInteger">
+					<xs:totalDigits value="3"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="levelType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="very easy"/>
+			<xs:enumeration value="easy"/>
+			<xs:enumeration value="medium"/>
+			<xs:enumeration value="hard"/>
+			<xs:enumeration value="very hard"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!--<xs:simpleType name="instrumentListType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-z]*"/>
+			<xs:minLength value="2"/>
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="instrumentsType">
+		<xs:list itemType="c:instrumentListType"/>
+	</xs:simpleType>
+-->
+
+	<xs:simpleType name="instrumentsType">
+		<xs:restriction>
+			<xs:simpleType>
+				<xs:list>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1" />
+							<xs:maxLength value="60" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:list>
+			</xs:simpleType>
+		</xs:restriction>
+	</xs:simpleType>
+	
+
+		<xs:simpleType name="contentType">
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[A-Z][a-z]*( [A-Z][a-z]*)*"/>
+				<xs:minLength value="1" />
+				<xs:maxLength value="30" />
+			</xs:restriction>
+		</xs:simpleType>
+
+
+		<xs:simpleType name="pagesType">
+			<xs:restriction base="xs:positiveInteger">
+				<xs:minInclusive value="1"/>
+				<xs:maxInclusive value="500"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+
+		<xs:simpleType name="ISBNtype">
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-[0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+	<xs:simpleType name="priceType">
+		<xs:restriction base="xs:float"></xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="priceCurType">
+		<xs:simpleContent>
+			<xs:extension base="c:priceType">
+				<xs:attribute name="cur">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="PLN"/>
+							<xs:enumeration value="EUR"/>
+							<xs:enumeration value="USD"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+			<!--<xs:pattern value="[0-9]*.[0-9][0-9]"/>-->
+		</xs:simpleContent>
+	</xs:complexType>
+
+
+	<!--<xs:complexType name="priceCurType">
+		<xs:sequence>
+			<xs:element type="c:priceType" name="price"/>
+		</xs:sequence>
+		<xs:attribute type="c:curType" name="cur" use="required"/>
+	</xs:complexType>
+-->
+	<!--tu zmieniam
+
+		<xs:simpleType name="curType">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="PLN"/>
+				<xs:enumeration value="EUR"/>
+				<xs:enumeration value="USD"/>
+			</xs:restriction>
+		</xs:simpleType>
+		-->
+
+
+
+
+
+
+
+
+	<!--<xs:attribute name="piecebookNoType">
+		<xs:simpleType>
+			<xs:restriction base="xs:integer">
+				<xs:minInclusive value="1"/>
+				<xs:maxInclusive value="20"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	-->
+	
+
+</xs:schema>

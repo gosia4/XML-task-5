@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--<c	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:schemaLocation="composers XMLSchema.xsd" xmlns="composers">
+	<p	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:schemaLocation="composers XMLSchema.xsd" xmlns="composers">
+	-->
+		<?xml-stylesheet type = "text/css" href="new 1.css"?>
+		<composers xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+		xs:schemaLocation="http://www.example.com XMLSchema.xsd"
+		 xmlns="http://www.example.com"
+				   >
+			
+			<documentInformation>
+				<author>
+					<student_name>Malgorzata</student_name>
+					<surname>Komorowska</surname>
+					<studentID>242218</studentID>
+				</author>
+				<creationDate>2022-10-11</creationDate>
+				<lastModificationDate>2022-10-25</lastModificationDate>
+			</documentInformation>
+			<composer id="1234" born="1810">
+				<person gender="male"/>
+				<first_name>Fryderyk</first_name>
+				<surname>Chopin</surname>
+				<nationality>Poland</nationality>
+				<lifespan>39</lifespan>
+				<address>
+					<ZIPcode>65-962</ZIPcode>
+				</address>
+				<pieces>
+					<piece nr="1">
+						<name>Nokturn</name>
+						<tonation>c-minor</tonation>
+						<level>hard</level>
+						<instruments>piano</instruments>
+						<publisher nr="2">
+							<price cur="PLN">19.99</price>
+						</publisher>
+					</piece>
+					<piece nr="2">
+						<name>Polonais</name>
+						<tonation>g-minor</tonation>
+						<op>45</op>
+						<level>hard</level>
+						<instruments>piano violin</instruments>
+						<publisher nr="2">
+							<price cur="EUR">6.39</price>
+						</publisher>
+					</piece>
+					<piece nr="3">
+						<name>Etude</name>
+						<tonation>c-minor</tonation>
+						<op>10</op>
+						<nr>4</nr>
+						<level>very hard</level>
+						<instruments>piano</instruments>
+						<publisher nr="2">
+							<price cur="USD">3.00</price>
+						</publisher>
+					</piece>
+					<piece nr="4">
+						<name>Nokturn</name>
+						<tonation>a-minor</tonation>
+						<level>medium</level>
+						<instruments>piano</instruments>
+						<publisher nr="4">
+							<price cur="PLN">15.99</price>
+						</publisher>
+					</piece>
+					<piece nr="5">
+						<name>Waltz</name>
+						<tonation>a-minor</tonation>
+						<level>easy</level>
+						<instruments>piano</instruments>
+						<publisher nr="4">
+							<price cur="PLN">8.99</price>
+						</publisher>
+					</piece>
+				</pieces>
+
+				<books>
+					<book no="1">
+						<content>Nokturn</content>
+						<amount_of_pages>56</amount_of_pages>
+						<ISBN>341-95-745-0781-1</ISBN>
+						<publisher nr="2">
+							<price cur="PLN">39.99</price>
+						</publisher>
+					</book>
+					<book no="2">
+						<content>Waltz</content>
+						<amount_of_pages>78</amount_of_pages>
+						<ISBN>330-55-987-1234-2</ISBN>
+						<publisher nr="2">
+							<price cur="PLN">45.99</price>
+						</publisher>
+					</book>
+					<book no="3">
+						<content>Songs</content>
+						<amount_of_pages>36</amount_of_pages>
+						<ISBN>671-94-785-0781-1</ISBN>
+						<publisher nr="2">
+							<price cur="PLN">19.99</price>
+						</publisher>
+					</book>
+					<book no="4">
+						<content>Etudes</content>
+						<amount_of_pages>56</amount_of_pages>
+						<ISBN>241-05-745-4891-2</ISBN>
+						<publisher nr="3">
+							<price cur="PLN">39.99</price>
+						</publisher>
+					</book>
+				</books>
+			</composer>
+
+
+			<composer id="7854" born="1756">
+				<person gender="male"/>
+				<first_name>Wolfgang</first_name>
+				<first_name>Amadeusz</first_name>
+				<surname>Mozart</surname>
+				<nationality>Austria</nationality>
+				<lifespan>35</lifespan>
+				<address>
+					<city>Salzburg</city>
+				</address>
+				<pieces>
+					<piece nr="1">
+						<name>Symphony</name>
+						<tonation>g-minor</tonation>
+						<nr>40</nr>
+						<level>very hard</level>
+						<instruments>violin viola cello double_bass french_corn trumpet oboe drums</instruments>
+						<publisher nr="2">
+							<price cur="EUR">14.99</price>
+						</publisher>
+					</piece>
+					<piece nr="2">
+						<name>Piano Concert</name>
+						<tonation>c-minor</tonation>
+						<nr>24</nr>
+						<level>hard</level>
+						<instruments>piano violin viola cello double_bass french_corn trumpet oboe drums</instruments>
+						<publisher nr="6">
+							<price cur="EUR">9.39</price>
+						</publisher>
+					</piece>
+					<piece nr="3">
+						<name>Sonate</name>
+						<tonation>f-minor</tonation>
+						<nr>4</nr>
+						<level>medium</level>
+						<instruments>piano</instruments>
+						<publisher nr="6">
+							<price cur="USD">3</price>
+						</publisher>
+					</piece>
+					<piece nr="4">
+						<name>Symphony</name>
+						<tonation>Es-major</tonation>
+						<nr>5</nr>
+						<level>hard</level>
+						<instruments>violin viola cello double_bass french_corn trumpet oboe drums</instruments>
+						<publisher nr="2">
+							<price cur="EUR">20.99</price>
+						</publisher>
+					</piece>
+					<piece nr="5">
+						<name>Piano Concert</name>
+						<tonation>C-major</tonation>
+						<level>hard</level>
+						<instruments>piano violin viola cello double_bass french_corn trumpet oboe drums</instruments>
+						<publisher nr="2">
+							<price cur="PLN">17.99</price>
+						</publisher>
+					</piece>
+				</pieces>
+
+				<books>
+					<book no="1">
+						<content>Sonates</content>
+						<amount_of_pages>150</amount_of_pages>
+						<ISBN>927-95-790-3456-1</ISBN>
+						<publisher nr="5">
+							<price cur="PLN">89.99</price>
+						</publisher>
+					</book>
+					<book no="2">
+						<content>Arias</content>
+						<amount_of_pages>82</amount_of_pages>
+						<ISBN>289-45-987-1098-2</ISBN>
+						<publisher nr="2">
+							<price cur="EUR">25.99</price>
+						</publisher>
+					</book>
+					<book no="3">
+						<content>Songs</content>
+						<amount_of_pages>50</amount_of_pages>
+						<ISBN>251-95-999-5681-1</ISBN>
+						<publisher nr="2">
+							<price cur="PLN">39.99</price>
+						</publisher>
+					</book>
+					<book no="4">
+						<content>Violin Concerts</content>
+						<amount_of_pages>200</amount_of_pages>
+						<ISBN>301-11-745-8951-1</ISBN>
+						<publisher nr="2">
+							<price cur="EUR">49.99</price>
+						</publisher>
+					</book>
+				</books>
+			</composer>
+
+
+			<composer id="8674" born="1770">
+				<person gender="male"/>
+				<first_name>Ludwig</first_name>
+				<first_name>Van</first_name>
+				<surname>Beethoven</surname>
+				<nationality>Garmany</nationality>
+				<lifespan>57</lifespan>
+				<address>
+					<city>Bonn</city>
+				</address>
+				<pieces>
+					<piece nr="1">
+						<name>Sonate</name>
+						<tonation>cis-minor</tonation>
+						<level>easy</level>
+						<instruments>piano</instruments>
+						<publisher nr="2">
+							<price cur="PLN">15.99</price>
+						</publisher>
+					</piece>
+					<piece nr="2">
+						<name>Symphony</name>
+						<tonation>c-minor</tonation>
+						<nr>5</nr>
+						<level>hard</level>
+						<instruments>violin viola cello double_bass french_corn trumpet oboe drums</instruments>
+						<publisher nr="2">
+							<price cur="EUR">12.39</price>
+						</publisher>
+					</piece>
+					<piece nr="3">
+						<name>Sonate</name>
+						<tonation>G-major</tonation>
+						<nr>8</nr>
+						<level>very hard</level>
+						<instruments>piano</instruments>
+						<publisher nr="2">
+							<price cur="USD">2.57</price>
+						</publisher>
+					</piece>
+
+					<piece nr="4">
+						<name>String Quartet</name>
+						<tonation>D-major</tonation>
+						<nr>3</nr>
+						<level>hard</level>
+						<instruments>violin viola cello double_bass</instruments>
+						<publisher nr="2">
+							<price cur="PLN">19.99</price>
+						</publisher>
+					</piece>
+					<piece nr="5">
+						<name>String Quartet</name>
+						<tonation>G-major</tonation>
+						<nr>3</nr>
+						<level>very hard</level>
+						<instruments>violin viola cello double_bass</instruments>
+						<publisher nr="2">
+							<price cur="PLN">34.99</price>
+						</publisher>
+					</piece>
+				</pieces>
+				<books>
+					<book no="1">
+						<content>Irish Songs</content>
+						<amount_of_pages>75</amount_of_pages>
+						<ISBN>444-95-745-1081-1</ISBN>
+						<publisher nr="2">
+							<price cur="PLN">39.99</price>
+						</publisher>
+					</book>
+					<book no="2">
+						<content>Sonates</content>
+						<amount_of_pages>78</amount_of_pages>
+						<ISBN>412-55-987-1875-9</ISBN>
+						<publisher nr="6">
+							<price cur="PLN">41.99</price>
+						</publisher>
+					</book>
+					<book no="3">
+						<content>Songs</content>
+						<amount_of_pages>140</amount_of_pages>
+						<ISBN>111-95-745-5781-6</ISBN>
+						<publisher nr="2">
+							<price cur="PLN">35.99</price>
+						</publisher>
+					</book>
+					<book no="4">
+						<content>Variations</content>
+						<amount_of_pages>90</amount_of_pages>
+						<ISBN>101-78-245-0781-1</ISBN>
+						<publisher nr="5">
+							<price cur="USD">13.99</price>
+						</publisher>
+					</book>
+				</books>
+			</composer>
+
+
+			<composer id="4567" born="1810">
+				<person gender="male"/>
+				<first_name>Jan</first_name>
+				<first_name>Sebastian</first_name>
+				<surname>Bach</surname>
+				<nationality>Germany</nationality>
+				<lifespan>65</lifespan>
+				<address>
+					<city>Eisenach</city>
+				</address>
+				<pieces>
+					<piece nr="1">
+						<name>Violin Concerto</name>
+						<tonation>D-major</tonation>
+						<level>hard</level>
+						<instruments>violin viola cello double_bass oboe flute drums</instruments>
+						<publisher nr="2">
+							<price cur="PLN">18.99</price>
+						</publisher>
+					</piece>
+					<piece nr="2">
+						<name>Orchestral Suite</name>
+						<tonation>C-major</tonation>
+						<nr>1</nr>
+						<level>very hard</level>
+						<instruments>violin viola cello double_bass harpsichord trumpet oboe</instruments>
+						<publisher nr="2">
+							<price cur="EUR">14.39</price>
+						</publisher>
+					</piece>
+					<piece nr="3">
+						<name>Brandenburg Concerto</name>
+						<tonation>G-major</tonation>
+						<nr>4</nr>
+						<level>very hard</level>
+						<instruments>piano violin viola cello double_bass</instruments>
+						<publisher nr="2">
+							<price cur="USD">3.00</price>
+						</publisher>
+					</piece>
+					<piece nr="4">
+						<name>Orchestral Suite</name>
+						<tonation>D-major</tonation>
+						<level>hard</level>
+						<instruments>violin viola cello double_bass harpsichord trumpet oboe</instruments>
+						<nr>3</nr>
+						<publisher nr="2">
+							<price cur="PLN">19.99</price>
+						</publisher>
+					</piece>
+					<piece nr="5">
+						<name>Allemande</name>
+						<tonation>g-minor</tonation>
+						<level>hard</level>
+						<instruments>harpsichord</instruments>
+						<publisher nr="2">
+							<price cur="PLN">9.99</price>
+						</publisher>
+					</piece>
+				</pieces>
+				<books>
+					<book no="1">
+						<content>Cantatas</content>
+						<amount_of_pages>65</amount_of_pages>
+						<ISBN>311-95-745-0581-1</ISBN>
+						<publisher nr="5">
+							<price cur="EUR">19.99</price>
+						</publisher>
+					</book>
+					<book no="2">
+						<content>Canons</content>
+						<amount_of_pages>56</amount_of_pages>
+						<ISBN>330-23-987-4343-2</ISBN>
+						<publisher nr="1">
+							<price cur="EUR">15.99</price>
+						</publisher>
+					</book>
+
+					<book no="3">
+						<content>Motets</content>
+						<amount_of_pages>100</amount_of_pages>
+						<ISBN>341-95-000-0781-1</ISBN>
+						<publisher nr="2">
+							<price cur="PLN">49.99</price>
+						</publisher>
+					</book>
+					<book no="4">
+						<content>Organ Works</content>
+						<amount_of_pages>320</amount_of_pages>
+						<ISBN>671-15-665-0781-1</ISBN>
+						<publisher nr="6">
+							<price cur="USD">49.99</price>
+						</publisher>
+					</book>
+				</books>
+			</composer>
+
+
+			<publisher id="1">
+				<namePublisher>PWM</namePublisher>
+			</publisher>
+			<publisher id="2">
+				<namePublisher>Universal Edition</namePublisher>
+			</publisher>
+			<publisher id="3">
+				<namePublisher>Edition Peters</namePublisher>
+			</publisher>
+			<publisher id="4">
+				<namePublisher>Zimmermann</namePublisher>
+			</publisher>
+			<publisher id="5">
+				<namePublisher>Oxford University Press</namePublisher>
+			</publisher>
+			<publisher id="6">
+				<namePublisher>Casa Ricordi</namePublisher>
+			</publisher>
+		</composers>
+<!--	</p>
+</c>-->
