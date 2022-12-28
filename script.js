@@ -241,15 +241,18 @@ function loadXMLDoc(path) {
         xmlDoc = this.responseXML;
         var table =
         `<tr><th>id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
-        <th>Nationality</th><th>Lifespan</th></tr>`;
+        <th>Nationality</th><th>Lifespan</th><th>nr</th><th>Title</th><th>Tonation</th><th>Level</th>
+        <th>Instruments</th><th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
         var x = xmlDoc.getElementsByTagName("composer");
           var piece = xmlDoc.getElementsByTagName("piece");
         var piecetable = `<tr><th>nr</th><th>Title</th><th>Tonation</th><th>Level</th>
         <th>Instruments</th><th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
          
-
+        //document.getElementById("fileContent").innerHTML = table;
+       
         // Start to fetch the data by using TagName
         for (i = 0; i < x.length; i++) {
+            for (j = 0; j < 5; j++){
             table += "<tr><td>" +
                 x[i].getAttribute("id") + "</td><td>" +
                 x[i].getAttribute("born") + "</td><td>" +
@@ -257,12 +260,29 @@ function loadXMLDoc(path) {
                 x[i].getElementsByTagName("surname")[0].childNodes[0].nodeValue + "</td><td>" +
                 x[i].getElementsByTagName("nationality")[0].childNodes[0].nodeValue + "</td><td>" +
                 x[i].getElementsByTagName("lifespan")[0].childNodes[0].nodeValue + "</td><td>" /* +
+                x[i].getElementsByTagName("name")[j].childNodes[0].nodeValue + "</td><td>" */ +
+                piece[j].getAttribute("nr") + "</td><td>" +
+                piece[j].getElementsByTagName("name")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+                piece[j].getElementsByTagName("tonation")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+                piece[j].getElementsByTagName("level")[0]
+                .childNodes[0].nodeValue + "</td><td>" +
+                piece[j].getElementsByTagName("instruments")[0]
+                .childNodes[0].nodeValue + "</td><td>"+
+                piece[j].getElementsByTagName("publisher")[0]
+                .getAttribute("nr") + "</td><td>"+
+                piece[j].getElementsByTagName("price")[0]
+                .childNodes[0].nodeValue + "</td><td>"+
+                piece[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td><td>"
+                
+                /* +
                 x[i].getElementsByTagName("composer")[0].childNodes[6].childNodes[0].childNodes[0].nodeValue + "</td><td>" */
                 /* +
                 x[i].getElementsByTagName("name")[0]
                 .childNodes[0].childNodes[0].nodeValue + "</td><td>" */;
                
-                 for (j = 0; j < 5; j++){
+                 /* for (j = 0; j < 5; j++){
             piecetable+= "<tr><td>" +
             piece[j].getAttribute("nr") + "</td><td>" +
             piece[j].getElementsByTagName("name")[0]
@@ -278,12 +298,12 @@ function loadXMLDoc(path) {
             piece[j].getElementsByTagName("price")[0]
             .childNodes[0].nodeValue + "</td><td>"+
             piece[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td><td>";
-        } 
+         */} 
                 
         }
         
         document.getElementById("fileContent").innerHTML = table;
-        document.getElementById("fileContent").innerHTML = piecetable;
+        //document.getElementById("fileContent").innerHTML = piecetable;
         //document.getElementById("fileContent").innerHTML = piecetable;
     };
 
@@ -316,10 +336,11 @@ function updateXML() {
     var i, j;
     var table =
         `<tr><th>id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
-        <th>Nationality</th><th>Lifespan</th></tr>`;
+        <th>Nationality</th><th>Lifespan</th><th>cos</th></tr>`;
     var x = xmlDoc.getElementsByTagName("composer");
    var piece = xmlDoc.getElementsByTagName("piece");
-    var piecetable = `<tr><th>nr</th><th>Title</th><th>Tonation</th><th>Level</th>
+    var piecetable = `<tr><th>id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
+    <th>Nationality</th><th>Lifespan</th><th>nr</th><th>Title</th><th>Tonation</th><th>Level</th>
     <th>Instruments</th><th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
     
     // Start to fetch the data by using TagName
@@ -357,7 +378,7 @@ function updateXML() {
     }
     
     document.getElementById("aTrescPliku").innerHTML = table;
-    document.getElementById("aTrescPliku").innerHTML = piecetable;
+    //document.getElementById("aTrescPliku").innerHTML = piecetable;
 
 }
 function deleteXML(position){
