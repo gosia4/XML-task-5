@@ -307,8 +307,12 @@ function loadXMLDoc(path) {
             .childNodes[0].nodeValue + "</td><td>"+
             book[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td></tr>";
          } 
-        // for (j = 0; j < 6; j++){
-         publishertable+="<tr><td>" +y[0].getElementsByTagName("publisher")[36].getAttribute("id") +
+         for (j = 0; j < 6; j++){ publishertable+="<tr><td>" +y[0].getElementsByTagName("publisher")[36+j].getAttribute("id") +
+         "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
+
+
+//liczenie na piechotę bez pętli for:
+         /* publishertable+="<tr><td>" +y[0].getElementsByTagName("publisher")[36].getAttribute("id") +
          "</td><td>" +y[0].getElementsByTagName("namePublisher")[0].childNodes[0].nodeValue +"</td></tr>"+"<tr><td>"+
          y[0].getElementsByTagName("publisher")[37].getAttribute("id") +
          "</td><td>" +y[0].getElementsByTagName("namePublisher")[1].childNodes[0].nodeValue +"</td></tr>"+"<tr><td>"+
@@ -319,9 +323,8 @@ function loadXMLDoc(path) {
          y[0].getElementsByTagName("publisher")[40].getAttribute("id") +
          "</td><td>" +y[0].getElementsByTagName("namePublisher")[4].childNodes[0].nodeValue +"</td></tr>"+"<tr><td>"+
          y[0].getElementsByTagName("publisher")[41].getAttribute("id") +
-         "</td><td>" +y[0].getElementsByTagName("namePublisher")[5].childNodes[0].nodeValue +"</td></tr>"/* 
-        y[j].getElementsByTagName("publisherName")[0].childNodes[0].nodeValue + "</td><td>" */ ;
-   // }
+         "</td><td>" +y[0].getElementsByTagName("namePublisher")[5].childNodes[0].nodeValue +"</td></tr>"; */
+       
         document.getElementById("fileContent").innerHTML = table;
         document.getElementById("fileContent2").innerHTML = piecetable;
         document.getElementById("fileContent3").innerHTML = booktable;
