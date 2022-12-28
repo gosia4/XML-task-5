@@ -244,9 +244,12 @@ function loadXMLDoc(path) {
         <th>Nationality</th><th>Lifespan</th></tr>`;
         var x = xmlDoc.getElementsByTagName("composer");
           var piece = xmlDoc.getElementsByTagName("piece");
+          var book = xmlDoc.getElementsByTagName("book");
         var piecetable = `<tr><th>nr</th><th>Title</th><th>Tonation</th><th>Level</th>
         <th>Instruments</th><th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
-         
+         var booktable=`<tr><th>nr</th><th>Title</th><th>Amount of pages</th><th>ISBN</th>
+         <th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
+        
         //document.getElementById("fileContent").innerHTML = table;
        
         // Start to fetch the data by using TagName
@@ -287,9 +290,24 @@ function loadXMLDoc(path) {
             .childNodes[0].nodeValue + "</td><td>"+
             piece[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td><td>";
          } 
+         for (j = 0; j < book.length; j++){
+            booktable+= "<tr><td>" +
+            book[j].getAttribute("no") + "</td><td>" +
+            book[j].getElementsByTagName("content")[0]
+            .childNodes[0].nodeValue + "</td><td>" +
+            book[j].getElementsByTagName("amount_of_pages")[0]
+            .childNodes[0].nodeValue + "</td><td>" +
+            book[j].getElementsByTagName("ISBN")[0]
+            .childNodes[0].nodeValue + "</td><td>" +
+            book[j].getElementsByTagName("publisher")[0]
+            .getAttribute("nr") + "</td><td>"+
+            book[j].getElementsByTagName("price")[0]
+            .childNodes[0].nodeValue + "</td><td>"+
+            book[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td><td>";
+         } 
         document.getElementById("fileContent").innerHTML = table;
         document.getElementById("fileContent2").innerHTML = piecetable;
-        //document.getElementById("fileContent").innerHTML = piecetable;
+        document.getElementById("fileContent3").innerHTML = booktable;
     };
 
     xhr.ontimeout = function (e) {
