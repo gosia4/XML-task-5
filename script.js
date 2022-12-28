@@ -243,12 +243,14 @@ function loadXMLDoc(path) {
         `<tr><th>id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
         <th>Nationality</th><th>Lifespan</th></tr>`;
         var x = xmlDoc.getElementsByTagName("composer");
+        var y = xmlDoc.getElementsByTagName("composers");
           var piece = xmlDoc.getElementsByTagName("piece");
           var book = xmlDoc.getElementsByTagName("book");
         var piecetable = `<tr><th>nr</th><th>Title</th><th>Tonation</th><th>Level</th>
         <th>Instruments</th><th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
          var booktable=`<tr><th>nr</th><th>Title</th><th>Amount of pages</th><th>ISBN</th>
          <th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
+         var publishertable=`<tr><th>Publisher's id</th><th>Name</th></tr>`;
         
         //document.getElementById("fileContent").innerHTML = table;
        
@@ -261,7 +263,7 @@ function loadXMLDoc(path) {
                 x[i].getElementsByTagName("first_name")[0].childNodes[0].nodeValue + "</td><td>" +
                 x[i].getElementsByTagName("surname")[0].childNodes[0].nodeValue + "</td><td>" +
                 x[i].getElementsByTagName("nationality")[0].childNodes[0].nodeValue + "</td><td>" +
-                x[i].getElementsByTagName("lifespan")[0].childNodes[0].nodeValue + "</td><td>" /* +
+                x[i].getElementsByTagName("lifespan")[0].childNodes[0].nodeValue + "</td></tr>" /* +
                 x[i].getElementsByTagName("name")[j].childNodes[0].nodeValue + "</td><td>" */ 
                 
                 /* +
@@ -288,7 +290,7 @@ function loadXMLDoc(path) {
             .getAttribute("nr") + "</td><td>"+
             piece[j].getElementsByTagName("price")[0]
             .childNodes[0].nodeValue + "</td><td>"+
-            piece[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td><td>";
+            piece[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td></tr>";
          } 
          for (j = 0; j < book.length; j++){
             booktable+= "<tr><td>" +
@@ -303,11 +305,27 @@ function loadXMLDoc(path) {
             .getAttribute("nr") + "</td><td>"+
             book[j].getElementsByTagName("price")[0]
             .childNodes[0].nodeValue + "</td><td>"+
-            book[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td><td>";
+            book[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td></tr>";
          } 
+        // for (j = 0; j < 6; j++){
+         publishertable+="<tr><td>" +y[0].getElementsByTagName("publisher")[36].getAttribute("id") +
+         "</td><td>" +y[0].getElementsByTagName("namePublisher")[0].childNodes[0].nodeValue +"</td></tr>"+"<tr><td>"+
+         y[0].getElementsByTagName("publisher")[37].getAttribute("id") +
+         "</td><td>" +y[0].getElementsByTagName("namePublisher")[1].childNodes[0].nodeValue +"</td></tr>"+"<tr><td>"+
+         y[0].getElementsByTagName("publisher")[38].getAttribute("id") +
+         "</td><td>" +y[0].getElementsByTagName("namePublisher")[2].childNodes[0].nodeValue+"</td></tr>" +"<tr><td>"+
+         y[0].getElementsByTagName("publisher")[39].getAttribute("id") +
+         "</td><td>" +y[0].getElementsByTagName("namePublisher")[3].childNodes[0].nodeValue+"</td></tr>" +"<tr><td>"+
+         y[0].getElementsByTagName("publisher")[40].getAttribute("id") +
+         "</td><td>" +y[0].getElementsByTagName("namePublisher")[4].childNodes[0].nodeValue +"</td></tr>"+"<tr><td>"+
+         y[0].getElementsByTagName("publisher")[41].getAttribute("id") +
+         "</td><td>" +y[0].getElementsByTagName("namePublisher")[5].childNodes[0].nodeValue +"</td></tr>"/* 
+        y[j].getElementsByTagName("publisherName")[0].childNodes[0].nodeValue + "</td><td>" */ ;
+   // }
         document.getElementById("fileContent").innerHTML = table;
         document.getElementById("fileContent2").innerHTML = piecetable;
         document.getElementById("fileContent3").innerHTML = booktable;
+        document.getElementById("fileContent4").innerHTML = publishertable;
     };
 
     xhr.ontimeout = function (e) {
