@@ -6,11 +6,9 @@ document.getElementById("btnLoad").onclick = function () {
 
 }
 
-document.getElementById("btnWczytajGatunki").onclick = function () {
-    loadGatunkiSelect();
-}
-document.getElementById("btnZapisz").onclick = function () {
-    zapisz();
+
+document.getElementById("btnSave").onclick = function () {
+    save();
 }
 document.getElementById("btnZaaktualizuj").onclick = function () {
     var val = document.getElementById("iRekordGryUpdate").value;
@@ -84,10 +82,16 @@ document.getElementById("btnZaaktualizuj").onclick = function () {
 document.getElementById("btnUsun").onclick = function () {
     deleteXML(document.getElementById("iRekordGryUsun").value);
 }
-document.getElementById("btnDodajRekord").onclick = function () {
-    dodajXML();
+
+
+
+document.getElementById("btnAddPiece").onclick = function () {
+    addComposer();
     updateXML();
 }
+
+
+
 document.getElementById("btnDodajGatunek").onclick = function () {
     if(document.getElementById("iNowyGatunek").value  === null || document.getElementById("iNowyGatunek").value === ""
     || document.getElementById("iNowyGatunekSkrót").value  === null || document.getElementById("iNowyGatunekSkrót").value === "") {
@@ -210,19 +214,7 @@ document.getElementById("btnModyfikacjaGatunku").onclick = function () {
 // }
 
 
-function loadGatunkiSelect() {
-    var x = xmlDoc.getElementsByTagName("gatunek");
-    select = document.getElementById('iGatunek');
-    select2 = document.getElementById('sGatunekUsun');
-    $("#iGatunek").empty();
-    $("#sGatunekUsun").empty();
 
-    for (var i =0; i<x.length; i++){
-        select.add(new Option(x[i].getAttribute("typ")));
-        select2.add(new Option(x[i].getAttribute("typ")));
-
-    }
-}
 
 
 
@@ -240,15 +232,15 @@ function loadXMLDoc(path) {
         var i, j;
         xmlDoc = this.responseXML;
         var table =
-        `<tr><th>id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
+        `<tr><th>Composer's id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
         <th>Nationality</th><th>Lifespan</th></tr>`;
         var x = xmlDoc.getElementsByTagName("composer");
         var y = xmlDoc.getElementsByTagName("composers");
           var piece = xmlDoc.getElementsByTagName("piece");
           var book = xmlDoc.getElementsByTagName("book");
-        var piecetable = `<tr><th>nr</th><th>Title</th><th>Tonation</th><th>Level</th>
+        var piecetable = `<tr><th>Piece's no</th><th>Title</th><th>Tonation</th><th>Level</th>
         <th>Instruments</th><th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
-         var booktable=`<tr><th>nr</th><th>Title</th><th>Amount of pages</th><th>ISBN</th>
+         var booktable=`<tr><th>Book's no</th><th>Title</th><th>Amount of pages</th><th>ISBN</th>
          <th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
          var publishertable=`<tr><th>Publisher's id</th><th>Name</th></tr>`;
         
@@ -335,7 +327,7 @@ function loadXMLDoc(path) {
 
 }
 
-function zapisz() {
+function save() {
     //Serialize
     const serializer = new XMLSerializer();
     var toSave = serializer.serializeToString(xmlDoc);
@@ -347,22 +339,22 @@ function zapisz() {
     //Utwórz i kliknij fałszywy tymczasowy link
     const fakeLink = document.createElement("a");
     fakeLink.href = url;
-    fakeLink.download = 'zmieniony.xml';
+    fakeLink.download = 'changed.xml';
     fakeLink.click();
 }
 function updateXML() {
     var i, j;
     xmlDoc = this.responseXML;
     var table =
-    `<tr><th>id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
+    `<tr><th>Composer's id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
     <th>Nationality</th><th>Lifespan</th></tr>`;
     var x = xmlDoc.getElementsByTagName("composer");
     var y = xmlDoc.getElementsByTagName("composers");
       var piece = xmlDoc.getElementsByTagName("piece");
       var book = xmlDoc.getElementsByTagName("book");
-    var piecetable = `<tr><th>nr</th><th>Title</th><th>Tonation</th><th>Level</th>
+    var piecetable = `<tr><th>Piece's no</th><th>Title</th><th>Tonation</th><th>Level</th>
     <th>Instruments</th><th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
-     var booktable=`<tr><th>nr</th><th>Title</th><th>Amount of pages</th><th>ISBN</th>
+     var booktable=`<tr><th>Book's no</th><th>Title</th><th>Amount of pages</th><th>ISBN</th>
      <th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
      var publishertable=`<tr><th>Publisher's id</th><th>Name</th></tr>`;
     
@@ -429,7 +421,7 @@ function deleteXML(position){
     x.parentNode.removeChild(x);
     updateXML();
 }
-function dodajXML(){
+function addComposer(){
 
     oldNode=xmlDoc.getElementsByTagName('composer')[0];
     var count = xmlDoc.getElementsByTagName("composer").length;
