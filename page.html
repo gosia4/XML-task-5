@@ -66,27 +66,44 @@
 		
 
 	</div>
+	<hr>
+	Deleting data<br>
+	<input id="iDeleteComposer" type ="number"> Give number of a composer to delete.<br>
+	<button id="btnDeleteComposer" class="button button1" >Delete composer</button><br>
+
+	<input id="iDeletePiece" type ="number"> Give number of a piece to delete.<br>
+	<button id="btnDeletePiece" class="button button1" >Delete piece</button><br>
+
+	<input id="iDeleteBook" type ="number"> Give number of a book to delete.<br>
+	<button id="btnDeleteBook" class="button button1" >Delete book</button><br>
+
+	<input id="iDeletePublisher" type ="number"> Give number of a publisher to delete.<br>
+	<button id="btnDeletePublisher" class="button button1" >Delete publisher</button><br>
 
 
 
 
 
 
-
+<hr>
+<hr>
+<hr>
 
 
 	MODYFIKACJA DANYCH<br>
-	<button id="btnZaaktualizuj" class="button button1" >Zaaktualizuj dane</button><br>
-	<input id="iRekordGryUpdate" type ="number"> Podaj rekord gry, który ma być aktualnie zmieniany<br><br>
+	<button id="btnZaaktualizuj" class="button button1" >Update date</button><br>
+	<input id="iComposerUpdate" type ="number">Give number of composer.<br><br>
 
 	<input id="iId" type="number"> Podaj id, na którą zostanie zmieniony rekord gry. Nie może kolidować z innymi id.<br><br>
 
-	<button id="btnModyfikacjaGatunku" class="button button1" >Kliknij ten przycisk żeby zaaktualizować obecnie zaznaczony gatunek poniżej</button><br>
-	<input id="iZmienianyGatunek" type="text"> Podaj nazwę zmienianego gatunku gier.<br>
-	<input id="iZmienianyGatunekSkrót" type="text" minlength="3" maxlength="3"> Podaj nazwę skrótu zmienianego gatunku gier.<br>
-	<select id="iGatunek"></select>  Gatunek?<br><br>
+	<input id="iBorn"/> Year of birth.<br><br>
 
-	<input id="iTytul"> Podaj nazwę tytułu, na który zostanie zmieniony rekord gry.<br>
+	<select id="iGender">
+		<option>male</option>
+		<option>female</option>
+	</select> Gender type<br>
+
+
 	<input id="iProducent"> Podaj nazwę producenta, na który zostanie zmieniony rekord gry.<br>
 	<input id="iWydawca"> Podaj nazwę wydawcy, na który zostanie zmieniony aktualnie rekord gry.<br>
 	<input id="iDystrybutor"> Podaj nazwę dystrybutora, na który zostanie zmieniony rekord gry.<br>

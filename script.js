@@ -13,63 +13,29 @@ document.getElementById("btnSave").onclick = function () {
 
 
 document.getElementById("btnZaaktualizuj").onclick = function () {
-    var val = document.getElementById("iRekordGryUpdate").value;
+    var val = document.getElementById("iComposerUpdate").value;
     if(idCheck(document.getElementById("iId").value)) {
         if(!(document.getElementById("iId").value === null || document.getElementById("iId").value === "" )){
-        xmlDoc.getElementsByTagName("gra")[val].setAttribute("ID", document.getElementById("gra").value);
+        xmlDoc.getElementsByTagName("composer")[val].setAttribute("id", document.getElementById("composer").value);
 		}
-        var select = document.getElementById('iGatunek');
+        var select = document.getElementById('iBorn');
         var value = select.options[select.selectedIndex].value;
-        xmlDoc.getElementsByTagName("gra")[val].setAttribute("gatunek", value);
+        xmlDoc.getElementsByTagName("composer")[val].setAttribute("born", value);
 
-        if(!(document.getElementById("iTytul").value === null || document.getElementById("iTytul").value === "" )){
-            xmlDoc.getElementsByTagName("tytul")[val].childNodes[0].nodeValue = document.getElementById("iTytul").value;
-        }
-        if(!(document.getElementById("iProducent").value === null || document.getElementById("iProducent").value === "" )) {
+        //if(!(document.getElementById("iPerson").value === null || document.getElementById("iPerson").value === "" )){
+            var select = document.getElementById('iGender');
+            var value = select.options[select.selectedIndex].value;
+            xmlDoc.getElementsByTagName("person")[val].setAttribute("gender", value);
+    
+
+        //}
+       /*  if(!(document.getElementById("iProducent").value === null || document.getElementById("iProducent").value === "" )) {
             xmlDoc.getElementsByTagName("producent")[val].childNodes[0].nodeValue = document.getElementById("iProducent").value;
         }
         if(!(document.getElementById("iWydawca").value === null || document.getElementById("iWydawca").value === "" )) {
             xmlDoc.getElementsByTagName("wydawca")[val].childNodes[0].nodeValue = document.getElementById("iWydawca").value;
-        }
-        if(!(document.getElementById("iWydawca").value === null || document.getElementById("iWydawca").value === "" )) {
-            xmlDoc.getElementsByTagName("dystrybutor")[val].childNodes[0].nodeValue = document.getElementById("iDystrybutor").value;
-        }
-        if(!(document.getElementById("iRokWydania").value === null || document.getElementById("iRokWydania").value === "" )) {
-            xmlDoc.getElementsByTagName("rokWydania")[val].childNodes[0].nodeValue = document.getElementById("iRokWydania").value;
-        }
-        if(!(document.getElementById("iCena").value === null || document.getElementById("iCena").value === "" )) {
-            xmlDoc.getElementsByTagName("cena")[val].childNodes[0].nodeValue = document.getElementById("iCena").value;
-        }
-        select = document.getElementById('iCenaTyp');
-        value = select.options[select.selectedIndex].value;
-        xmlDoc.getElementsByTagName("cena")[val].getAttributeNode("waluta").nodeValue = value;
-
-        if (document.getElementById("cbCzyWypozyczona").checked)
-            xmlDoc.getElementsByTagName("czyWypozyczona")[val].childNodes[0].nodeValue = "TAK";
-        else
-            xmlDoc.getElementsByTagName("czyWypozyczona")[val].childNodes[0].nodeValue = "NIE";
-        //
-        // if (document.getElementById("rPEGIkazdy").checked)
-        //     xmlDoc.getElementsByTagName("PEGI")[val].childNodes[0].nodeValue = document.getElementById("rPEGIkazdy").value;
-        // else if (document.getElementById("rPEGI7+").checked)
-        //     xmlDoc.getElementsByTagName("PEGI")[val].childNodes[0].nodeValue = document.getElementById("rPEGI7+").value;
-        // else if (document.getElementById("rPEGI12+").checked)
-        //     xmlDoc.getElementsByTagName("PEGI")[val].childNodes[0].nodeValue = document.getElementById("rPEGI12+").value;
-        // else if (document.getElementById("rPEGI16+").checked)
-        //     xmlDoc.getElementsByTagName("PEGI")[val].childNodes[0].nodeValue = document.getElementById("rPEGI16+").value;
-
-
-        select = document.getElementById('iPEGI');
-        value = select.options[select.selectedIndex].value;
-        xmlDoc.getElementsByTagName("PEGI")[val].childNodes[0].nodeValue = value;
-
-        select = document.getElementById('iPlatforma');
-        value = select.options[select.selectedIndex].value;
-        xmlDoc.getElementsByTagName("platforma")[val].childNodes[0].nodeValue = value;
-
-        if(!(document.getElementById("iJezyk").value === null || document.getElementById("iJezyk").value === "" )) {
-            xmlDoc.getElementsByTagName("jezyk")[val].childNodes[0].nodeValue = document.getElementById("iJezyk").value;
-        }
+        } */
+       
         updateXML();
 
 
@@ -85,8 +51,16 @@ document.getElementById("btnZaaktualizuj").onclick = function () {
 document.getElementById("btnDeleteComposer").onclick = function () {
     deleteComposer(document.getElementById("iDeleteComposer").value);
 }
-
-
+//usuwamy piece
+document.getElementById("btnDeletePiece").onclick = function () {
+    deletePiece(document.getElementById("iDeletePiece").value);
+}
+document.getElementById("btnDeleteBook").onclick = function () {
+    deleteBook(document.getElementById("iDeleteBook").value);
+}
+document.getElementById("btnDeletePublisher").onclick = function () {
+    deletePublisher(document.getElementById("iDeletePublisher").value);
+}
 
 document.getElementById("btnAddPiece").onclick = function () {
     addComposer();
@@ -350,7 +324,7 @@ function save() {
 }
 function updateXML() {
     var i, j;
-    xmlDoc = this.responseXML;
+    //xmlDoc = this.responseXML;
     var table =
         `<tr><th>Composer's id</th><th>Date of birth</th><th>gender</th><th>firstName</th><th>Surname</th>
         <th>Nationality</th><th>Lifespan</th><th>City</th></tr>`;
@@ -418,9 +392,26 @@ function updateXML() {
     document.getElementById("afileContent4").innerHTML = publishertable;
 
 }
-//usuwanie nie działa
+//usuwanie composer
 function deleteComposer(position){
-    var x = xmlDoc.getElementsByTagName("composer")[position];
+    var x = xmlDoc.getElementsByTagName("composer")[position-1];
+    x.parentNode.removeChild(x);
+    updateXML();
+}
+//pieces usuwanie działa
+function deletePiece(position){
+    var x = xmlDoc.getElementsByTagName("piece")[position-1];
+    x.parentNode.removeChild(x);
+    updateXML();
+}
+function deleteBook(position){
+    var x = xmlDoc.getElementsByTagName("book")[position-1];
+    x.parentNode.removeChild(x);
+    updateXML();
+}
+//usuwanie publisher
+function deletePublisher(position){
+    var x = xmlDoc.getElementsByTagName("publisher")[position+36];
     x.parentNode.removeChild(x);
     updateXML();
 }
@@ -428,6 +419,7 @@ function deleteComposer(position){
 
 
 //modyfying composers
+
 document.getElementById("modify_button_composer").onclick = function () {
     load_new_data_composer();
     updateXML();
@@ -471,7 +463,7 @@ function load_new_data_composer(){
 
     for (let i = 0;; i++) {
 
-        const xml_element = get_editable_composer_childen(xml_doc.getElementsByTagName("composers:composer")[modify_id_composer-1])[i]
+        const xml_element = get_editable_composer_childen(xml_doc.getElementsByTagName("composer")[modify_id_composer-1])[i]
         const new_element = get_new_velues_childen_composer()[i]
 
         if(!new_element) break;
