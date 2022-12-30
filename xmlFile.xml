@@ -5,8 +5,7 @@
 		<?xml-stylesheet type = "text/css" href="new 1.css"?>
 		<composers xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 		xs:schemaLocation="http://www.example.com XMLSchema.xsd"
-		 xmlns="http://www.example.com"
-				   >
+		 xmlns="http://www.example.com">
 			
 			<documentInformation>
 				<author>

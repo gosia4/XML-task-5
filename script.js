@@ -12,7 +12,7 @@ document.getElementById("btnSave").onclick = function () {
 }
 
 
-document.getElementById("btnZaaktualizuj").onclick = function () {
+document.getElementById("btnUpdate").onclick = function () {
     var val = document.getElementById("iComposerUpdate").value;
     if(idCheck(document.getElementById("iId").value)) {
         if(!(document.getElementById("iId").value === null || document.getElementById("iId").value === "" )){
@@ -29,12 +29,21 @@ document.getElementById("btnZaaktualizuj").onclick = function () {
     
 
         //}
-       /*  if(!(document.getElementById("iProducent").value === null || document.getElementById("iProducent").value === "" )) {
-            xmlDoc.getElementsByTagName("producent")[val].childNodes[0].nodeValue = document.getElementById("iProducent").value;
+        if(!(document.getElementById("ifirst_name").value === null || document.getElementById("ifirst_name").value === "" )) {
+            xmlDoc.getElementsByTagName("first_name")[val].childNodes[0].nodeValue = document.getElementById("ifirst_name").value;
         }
-        if(!(document.getElementById("iWydawca").value === null || document.getElementById("iWydawca").value === "" )) {
-            xmlDoc.getElementsByTagName("wydawca")[val].childNodes[0].nodeValue = document.getElementById("iWydawca").value;
-        } */
+        if(!(document.getElementById("isurname").value === null || document.getElementById("isurname").value === "" )) {
+            xmlDoc.getElementsByTagName("surname")[val].childNodes[0].nodeValue = document.getElementById("isurname").value;
+        }
+        if(!(document.getElementById("inationality").value === null || document.getElementById("inationality").value === "" )) {
+            xmlDoc.getElementsByTagName("nationality")[val].childNodes[0].nodeValue = document.getElementById("inationality").value;
+        }
+        if(!(document.getElementById("ilifespan").value === null || document.getElementById("ilifespan").value === "" )) {
+            xmlDoc.getElementsByTagName("lifespan")[val].childNodes[0].nodeValue = document.getElementById("ilifespan").value;
+        }
+        if(!(document.getElementById("icity").value === null || document.getElementById("icity").value === "" )) {
+            xmlDoc.getElementsByTagName("city")[val].childNodes[0].nodeValue = document.getElementById("icity").value;
+        }
        
         updateXML();
 
@@ -42,7 +51,7 @@ document.getElementById("btnZaaktualizuj").onclick = function () {
 
     }
     else
-        alert("Podane id już istnieje.");
+        alert("Given id exists.");
 
         updateXML();
 
@@ -62,7 +71,7 @@ document.getElementById("btnDeletePublisher").onclick = function () {
     deletePublisher(document.getElementById("iDeletePublisher").value);
 }
 
-document.getElementById("btnAddPiece").onclick = function () {
+document.getElementById("btnAddComposer").onclick = function () {
     addComposer();
     updateXML();
 }
@@ -272,7 +281,11 @@ function loadXMLDoc(path) {
             book[j].getElementsByTagName("price")[0]
             .childNodes[0].nodeValue + "</td><td>"+
             book[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td></tr>";
-         } 
+         }
+         
+     /* for (j = 0; j < y[0].childNodes[0].getElementsByTagName("publisher").length; j++){ publishertable+="<tr><td>" +y[0].childNodes[0].getElementsByTagName("publisher") +
+     "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
+ */
          for (j = 0; j < 6; j++){ publishertable+="<tr><td>" +y[0].getElementsByTagName("publisher")[36+j].getAttribute("id") +
          "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
 
@@ -386,6 +399,10 @@ function updateXML() {
      for (j = 0; j < 6; j++){ publishertable+="<tr><td>" +y[0].getElementsByTagName("publisher")[36+j].getAttribute("id") +
      "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
 
+
+     /* for (j = 0; j < y[0].childNodes[0].getElementsByTagName("publisher").length; j++){ publishertable+="<tr><td>" +y[0].childNodes[0].getElementsByTagName("publisher") +
+     "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
+ */
     document.getElementById("afileContent").innerHTML = table;
     document.getElementById("afileContent2").innerHTML = piecetable;
     document.getElementById("afileContent3").innerHTML = booktable;
@@ -409,9 +426,9 @@ function deleteBook(position){
     x.parentNode.removeChild(x);
     updateXML();
 }
-//usuwanie publisher
+//usuwanie publisher nie działa, źle zrobiona pętla w loadXML
 function deletePublisher(position){
-    var x = xmlDoc.getElementsByTagName("publisher")[position+36];
+    var x = xmlDoc.getElementsByTagName("publisher").getAttribute("id")[position-1];
     x.parentNode.removeChild(x);
     updateXML();
 }

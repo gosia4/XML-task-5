@@ -67,7 +67,7 @@
 
 	</div>
 	<hr>
-	Deleting data<br>
+	<h3>Deleting data</h3><br>
 	<input id="iDeleteComposer" type ="number"> Give number of a composer to delete.<br>
 	<button id="btnDeleteComposer" class="button button1" >Delete composer</button><br>
 
@@ -77,9 +77,9 @@
 	<input id="iDeleteBook" type ="number"> Give number of a book to delete.<br>
 	<button id="btnDeleteBook" class="button button1" >Delete book</button><br>
 
-	<input id="iDeletePublisher" type ="number"> Give number of a publisher to delete.<br>
+	<!--<input id="iDeletePublisher" type ="number"> Give number of a publisher to delete.<br>
 	<button id="btnDeletePublisher" class="button button1" >Delete publisher</button><br>
-
+	-->
 
 
 
@@ -91,7 +91,7 @@
 
 
 	MODYFIKACJA DANYCH<br>
-	<button id="btnZaaktualizuj" class="button button1" >Update date</button><br>
+	<button id="btnUpdate" class="button button1" >Update date</button><br>
 	<input id="iComposerUpdate" type ="number">Give number of composer.<br><br>
 
 	<input id="iId" type="number"> Podaj id, na którą zostanie zmieniony rekord gry. Nie może kolidować z innymi id.<br><br>
@@ -102,33 +102,16 @@
 		<option>male</option>
 		<option>female</option>
 	</select> Gender type<br>
+	<input id="ifirst_name"> Give the first name.<br>
+	<input id="isurname"> Give the surname.<br>
+	<input id="inationality"> Give the nationality.<br>
+	<input id="ilifespan" type="number" min="1">Give lifespan.<br>
+	<input id="icity">Give the city.<br>
 
 
-	<input id="iProducent"> Podaj nazwę producenta, na który zostanie zmieniony rekord gry.<br>
-	<input id="iWydawca"> Podaj nazwę wydawcy, na który zostanie zmieniony aktualnie rekord gry.<br>
-	<input id="iDystrybutor"> Podaj nazwę dystrybutora, na który zostanie zmieniony rekord gry.<br>
-	<input id="iRokWydania" type="number" min="1"> Podaj rok wydania, na który zostanie zmieniony rekord gry.<br>
-	<input id="iCena" type="number" min="0"> Podaj cenę, na którą zostanie zmieniony rekord gry.<br>
-	<select id="iCenaTyp">
-		<option>PLN</option>
-		<option>EURO</option>
-	</select>  Typ waluty?<br>
-	<p>Czy wypożyczona?</p>
-	<input type="checkbox" id="cbCzyWypozyczona" value="Tak">Tak<br>
-	<select id="iPEGI">
-		<option>Każdy</option>
-		<option>7+</option>
-		<option>12+</option>
-		<option>16+</option>
-	</select>  PEGI?<br><br>
-	<select id="iPlatforma">
-		<option>Windows</option>
-		<option>Linux</option>
-		<option>Android</option>
-		<option>Nintendo Switch</option>
-	</select>  Platforma?<br><br>
-	<input id="iJezyk"> Podaj język, na który zostanie zmieniony aktualnie rekord gry.<br>
-<hr>
+	<hr>
+	<hr>
+	<hr>
 	DODAWANIE DANYCH<br>
 	<button id="btnAddPiece" class="button button1" >Add piece</button><br>
 	<button id="btnDodajGatunek" class="button button1" >Dodaj gatunek</button><br>
