@@ -21,8 +21,60 @@
 	<table id="fileContent4" ></table>
 	<p>Current file content</p>
 	<table id="afileContent" ></table>
-	<table id="afileContent" ></table>
+	<table id="afileContent2" ></table>
+	<table id="afileContent3" ></table>
+	<table id="afileContent4" ></table>
 	<hr>
+	<h3>Composer modification</h3>
+	<button id="modify_button_composer" class="button button1" >Modify composers</button>
+	<input id="modify_id_composer" type ="number" min="0"> Choose number of composer to modify<br><br>
+	<div id="new_values_composer">
+		<input id="new_composer_id"> Enter new composer's id.<br>
+		<input id="new_composer_id"> Enter year of composer's birth.<br>
+		<input id="new_first_name"> Enter new first_name.<br>
+		<input id="new_surname"> Enter new surname.<br>
+		<input id="new_nationality"> Enter new nationality.<br>
+		<input id="new_lifespan"> Enter new lifespan.<br>
+		<input id="new_city"> Enter new city.<br>
+		
+	</div>
+	
+	<hr>
+
+	<h3>Pieces modification</h3>
+	<button id="modify_button_pieces" class="button button1" >Modify pieces</button>
+	<input id="modify_id_pieces" type ="number" min="0"> Choose number of piece to modify<br><br>
+	<div id="new_values_pieces">
+		<input id="new_game_id"> Enter new piece number.<br>
+		<input id="new_title"> Enter new title.<br>
+		<input id="new_tonation"> Enter new tonation.<br>
+		<select id="new_level">
+			<option>very hard</option>
+			<option>hard</option>
+			<option>medium</option>
+			<option>easy</option>
+			<option>very easy</option>
+		</select> Choose the level.<br>
+		<input id="new_instruments"> Enter new instruments. You can type as many as you want, use spaces instead of comas.<br>
+		<input id="new_publisher_id"> Enter new publisher's id.<br>
+		<input id="new_price" type="number" min="0"> 
+		<select id="new_currency">
+			<option>PLN</option>
+			<option>USD</option>
+			<option>EUR</option>
+		</select> Enter new price.<br>
+		
+
+	</div>
+
+
+
+
+
+
+
+
+
 	MODYFIKACJA DANYCH<br>
 	<button id="btnZaaktualizuj" class="button button1" >Zaaktualizuj dane</button><br>
 	<input id="iRekordGryUpdate" type ="number"> Podaj rekord gry, który ma być aktualnie zmieniany<br><br>
@@ -71,8 +123,10 @@
 	<input id="iNowePEGI" type="number" minlength="2" maxlength="2"> Podaj cyfrę oznaczającą minimalny wiek (PEGI).<br>
 <hr>
 	USUWANIE DANYCH<br>
-	<input id="iRekordGryUsun" type ="number"> Podaj rekord gry, który ma być usunięty<br>
-	<button id="btnUsun" class="button button1" >Usuń rekord</button><br>
+	<input id="iDeleteComposer" type ="number"> Give number of a composer to delete.<br>
+	<button id="btnDeleteComposer" class="button button1" >Delete composer</button><br>
+
+
 	<select id="sGatunekUsun"></select>  Wybierz usuwany gatunek, a potem potwierdź przyciskiem na dole<br><br>
 	<button id="btnUsuńGatunek" class="button button2" >Usuń gatunek</button><br>
 	<select id="iPlatformaUsun">

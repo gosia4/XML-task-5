@@ -6,10 +6,12 @@ document.getElementById("btnLoad").onclick = function () {
 
 }
 
-
+//zapisywanue działa
 document.getElementById("btnSave").onclick = function () {
     save();
 }
+
+
 document.getElementById("btnZaaktualizuj").onclick = function () {
     var val = document.getElementById("iRekordGryUpdate").value;
     if(idCheck(document.getElementById("iId").value)) {
@@ -79,8 +81,9 @@ document.getElementById("btnZaaktualizuj").onclick = function () {
         updateXML();
 
 }
-document.getElementById("btnUsun").onclick = function () {
-    deleteXML(document.getElementById("iRekordGryUsun").value);
+//usuwamy composer
+document.getElementById("btnDeleteComposer").onclick = function () {
+    deleteComposer(document.getElementById("iDeleteComposer").value);
 }
 
 
@@ -232,8 +235,8 @@ function loadXMLDoc(path) {
         var i, j;
         xmlDoc = this.responseXML;
         var table =
-        `<tr><th>Composer's id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
-        <th>Nationality</th><th>Lifespan</th></tr>`;
+        `<tr><th>Composer's id</th><th>Date of birth</th><th>gender</th><th>firstName</th><th>Surname</th>
+        <th>Nationality</th><th>Lifespan</th><th>City</th></tr>`;
         var x = xmlDoc.getElementsByTagName("composer");
         var y = xmlDoc.getElementsByTagName("composers");
           var piece = xmlDoc.getElementsByTagName("piece");
@@ -249,10 +252,13 @@ function loadXMLDoc(path) {
             table += "<tr><td>" +
                 x[i].getAttribute("id") + "</td><td>" +
                 x[i].getAttribute("born") + "</td><td>" +
-                x[i].getElementsByTagName("first_name")[0].childNodes[0].nodeValue + "</td><td>" +
+                x[i].getElementsByTagName("person")[0].getAttribute("gender")+ "</td><td>"+
+                x[i].getElementsByTagName("first_name")[0].childNodes[0].nodeValue + "</td><td>" +/* 
+                x[i].getElementsByTagName("first_name")[1].childNodes[0].nodeValue + "</td><td>" + */
                 x[i].getElementsByTagName("surname")[0].childNodes[0].nodeValue + "</td><td>" +
                 x[i].getElementsByTagName("nationality")[0].childNodes[0].nodeValue + "</td><td>" +
-                x[i].getElementsByTagName("lifespan")[0].childNodes[0].nodeValue + "</td></tr>" /* +
+                x[i].getElementsByTagName("lifespan")[0].childNodes[0].nodeValue + "</td><td>"+
+                x[i].getElementsByTagName("city")[0].childNodes[0].nodeValue +"</td></tr>" /* +
                 x[i].getElementsByTagName("name")[j].childNodes[0].nodeValue + "</td><td>" */ 
                 /* +
                 x[i].getElementsByTagName("composer")[0].childNodes[6].childNodes[0].childNodes[0].nodeValue + "</td><td>" */
@@ -346,9 +352,9 @@ function updateXML() {
     var i, j;
     xmlDoc = this.responseXML;
     var table =
-    `<tr><th>Composer's id</th><th>Date of birth</th><th>firstName</th><th>Surname</th>
-    <th>Nationality</th><th>Lifespan</th></tr>`;
-    var x = xmlDoc.getElementsByTagName("composer");
+        `<tr><th>Composer's id</th><th>Date of birth</th><th>gender</th><th>firstName</th><th>Surname</th>
+        <th>Nationality</th><th>Lifespan</th><th>City</th></tr>`;
+       var x = xmlDoc.getElementsByTagName("composer");
     var y = xmlDoc.getElementsByTagName("composers");
       var piece = xmlDoc.getElementsByTagName("piece");
       var book = xmlDoc.getElementsByTagName("book");
@@ -363,17 +369,13 @@ function updateXML() {
         table += "<tr><td>" +
             x[i].getAttribute("id") + "</td><td>" +
             x[i].getAttribute("born") + "</td><td>" +
-            x[i].getElementsByTagName("first_name")[0].childNodes[0].nodeValue + "</td><td>" +
+            x[i].getElementsByTagName("person")[0].getAttribute("gender")+ "</td><td>"+
+            x[i].getElementsByTagName("first_name")[0].childNodes[0].nodeValue + "</td><td>" +/* 
+            x[i].getElementsByTagName("first_name")[1].childNodes[0].nodeValue + "</td><td>" + */
             x[i].getElementsByTagName("surname")[0].childNodes[0].nodeValue + "</td><td>" +
             x[i].getElementsByTagName("nationality")[0].childNodes[0].nodeValue + "</td><td>" +
-            x[i].getElementsByTagName("lifespan")[0].childNodes[0].nodeValue + "</td></tr>" /* +
-            x[i].getElementsByTagName("name")[j].childNodes[0].nodeValue + "</td><td>" */ 
-            /* +
-            x[i].getElementsByTagName("composer")[0].childNodes[6].childNodes[0].childNodes[0].nodeValue + "</td><td>" */
-            /* +x[i].getElementsByTagName("name")[0].childNodes[0].childNodes[0].nodeValue + "</td><td>" */;
-           
-              
-            
+            x[i].getElementsByTagName("lifespan")[0].childNodes[0].nodeValue + "</td><td>"+
+            x[i].getElementsByTagName("city")[0].childNodes[0].nodeValue +"</td></tr>";
     }
     for (j = 0; j < piece.length; j++){
         piecetable+= "<tr><td>" +
@@ -411,16 +413,154 @@ function updateXML() {
      "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
 
     document.getElementById("afileContent").innerHTML = table;
-    document.getElementById("afileContent").innerHTML = piecetable;
-    document.getElementById("afileContent").innerHTML = booktable;
-    document.getElementById("afileContent").innerHTML = publishertable;
+    document.getElementById("afileContent2").innerHTML = piecetable;
+    document.getElementById("afileContent3").innerHTML = booktable;
+    document.getElementById("afileContent4").innerHTML = publishertable;
 
 }
-function deleteXML(position){
+//usuwanie nie działa
+function deleteComposer(position){
     var x = xmlDoc.getElementsByTagName("composer")[position];
     x.parentNode.removeChild(x);
     updateXML();
 }
+
+
+
+//modyfying composers
+document.getElementById("modify_button_composer").onclick = function () {
+    load_new_data_composer();
+    updateXML();
+}
+
+// zwraca array referencji do atrybutów argumentu, elementów będących jego dziećmi i atrybutów tych elementów 
+function get_editable_composer_childen(composer) {
+    let stuff = [];
+    stuff.push(composer.attributes[0])
+    stuff.push(composer.attributes[1])
+    for (let i = 0; i < composer.children.length; i++) {
+        const element = composer.children[i];
+        if(element.innerHTML){
+            stuff.push(element);
+        }
+        if(element.attributes.length > 0){
+            stuff.push(element.attributes[0]);
+        }
+    }
+    return stuff;
+}
+
+// zwraca array referencji do podelementów "new_values" w htmlu, które nie są tekstem ani <br>
+// (czyli inputy i selecty)
+// output pasuje koresomnduje jeden do jednego z get_editable_game_childen()
+function get_new_velues_childen_composer(){
+    let stuff = [];
+    for (let i = 0; i < document.getElementById("new_values_composer").childNodes.length; i++) {
+        const element = document.getElementById("new_values_composer").childNodes[i];
+        if (element.nodeType == 1 && element.nodeName != "BR"){
+            stuff.push(element);
+        }
+    }
+    return stuff;
+}
+
+// ładuje dane z sekcji "Data modification" do xml_doc, jeżeli coś zostało wpisane (to ostatnie nie działa dla selectów)
+function load_new_data_composer(){ 
+    var modify_id_composer = document.getElementById("modify_id_composer").value;
+    if (!modify_id_composer) return; 
+
+    for (let i = 0;; i++) {
+
+        const xml_element = get_editable_composer_childen(xml_doc.getElementsByTagName("composers:composer")[modify_id_composer-1])[i]
+        const new_element = get_new_velues_childen_composer()[i]
+
+        if(!new_element) break;
+
+        if(new_element.value) {
+            xml_element.textContent = new_element.value
+        }
+    }
+}
+
+
+
+
+
+
+
+//modyfying pieces, nie działa
+document.getElementById("modify_button_pieces").onclick = function () {
+    load_new_data_pieces();
+    updateXML();
+}
+
+// zwraca array referencji do atrybutów argumentu, elementów będących jego dziećmi i atrybutów tych elementów 
+function get_editable_piece_childen(piece) {
+    let stuff = [];
+    stuff.push(piece.attributes[0])
+    stuff.push(piece.attributes[1])
+    for (let i = 0; i < piece.children.length; i++) {
+        const element = piece.children[i];
+        if(element.innerHTML){
+            stuff.push(element);
+        }
+        if(element.attributes.length > 0){
+            stuff.push(element.attributes[0]);
+        }
+    }
+    return stuff;
+}
+
+// zwraca array referencji do podelementów "new_values" w htmlu, które nie są tekstem ani <br>
+// (czyli inputy i selecty)
+// output pasuje koresomnduje jeden do jednego z get_editable_game_childen()
+function get_new_velues_childen_pieces(){
+    let stuff = [];
+    for (let i = 0; i < document.getElementById("new_valuesa_pieces").childNodes.length; i++) {
+        const element = document.getElementById("new_values_pieces").childNodes[i];
+        if (element.nodeType == 1 && element.nodeName != "BR"){
+            stuff.push(element);
+        }
+    }
+    return stuff;
+}
+
+// ładuje dane z sekcji "Data modification" do xml_doc, jeżeli coś zostało wpisane (to ostatnie nie działa dla selectów)
+function load_new_data_pieces(){ 
+    var modify_id = document.getElementById("modify_id_pieces").value;
+    if (!modify_id) return; 
+
+    for (let i = 0;; i++) {
+
+        const xml_element = get_editable_piece_childen(xml_doc.getElementsByTagName("pieces:piece")[modify_id_pieces-1])[i]
+        const new_element = get_new_velues_childen_pieces()[i]
+
+        if(!new_element) break;
+
+        if(new_element.value) {
+            xml_element.textContent = new_element.value
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function addComposer(){
 
     oldNode=xmlDoc.getElementsByTagName('composer')[0];
