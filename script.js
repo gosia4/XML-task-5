@@ -11,7 +11,7 @@ document.getElementById("btnSave").onclick = function () {
     save();
 }
 
-
+//aktualizacja sposobem gościa z ftimsu, potrzebna do modyfikacji composer
 document.getElementById("btnUpdate").onclick = function () {
     var val = document.getElementById("iComposerUpdate").value;
     if(idCheck(document.getElementById("iId").value)) {
@@ -64,6 +64,7 @@ document.getElementById("btnDeleteComposer").onclick = function () {
 document.getElementById("btnDeletePiece").onclick = function () {
     deletePiece(document.getElementById("iDeletePiece").value);
 }
+//usuwamy book
 document.getElementById("btnDeleteBook").onclick = function () {
     deleteBook(document.getElementById("iDeleteBook").value);
 }
@@ -71,14 +72,14 @@ document.getElementById("btnDeletePublisher").onclick = function () {
     deletePublisher(document.getElementById("iDeletePublisher").value);
 }
 
-document.getElementById("btnAddComposer").onclick = function () {
+/* document.getElementById("btnAddComposer").onclick = function () {
     addComposer();
     updateXML();
-}
+} */
 
 
 
-document.getElementById("btnDodajGatunek").onclick = function () {
+/* document.getElementById("btnDodajGatunek").onclick = function () {
     if(document.getElementById("iNowyGatunek").value  === null || document.getElementById("iNowyGatunek").value === ""
     || document.getElementById("iNowyGatunekSkrót").value  === null || document.getElementById("iNowyGatunekSkrót").value === "") {
         alert("Wypełnij wszystkie wymagane pola: Nazwa Gatunku, Skrót Gatunku");
@@ -96,12 +97,12 @@ document.getElementById("btnDodajGatunek").onclick = function () {
         newNode.textContent = document.getElementById("iNowyGatunek").value
         xmlDoc.documentElement.getElementsByTagName("gatunki")[0].appendChild(newNode);
 
-    }
+    } */
 
 
     // var opt = document.createElement(document.getElementById("iNowyGatunekSkrót").value);
     // select.appendChild(opt);
-}
+/* }
 document.getElementById("btnDodajPlatforme").onclick = function () {
     if(document.getElementById("iNowaPlatforma").value  === null || document.getElementById("iNowaPlatforma").value === "") {
         alert("Wypełnij wszystkie wymagane pola: Nazwa Platformy");
@@ -194,7 +195,7 @@ document.getElementById("btnModyfikacjaGatunku").onclick = function () {
 
         updateXML();
     }
-}
+} */
 // document.getElementById("btnValidate").onclick = function () {
 //     validateXMLAgainstXSD()
 // }
@@ -203,7 +204,7 @@ document.getElementById("btnModyfikacjaGatunku").onclick = function () {
 
 
 
-
+//załadowanie xml na stronę
 function loadXMLDoc(path) {
     var xhr = new XMLHttpRequest();
 
@@ -222,6 +223,9 @@ function loadXMLDoc(path) {
         <th>Nationality</th><th>Lifespan</th><th>City</th></tr>`;
         var x = xmlDoc.getElementsByTagName("composer");
         var y = xmlDoc.getElementsByTagName("composers");
+
+       //var pub=xmlDoc.getElementsByTagName("publisher").getElementsById("id");
+
           var piece = xmlDoc.getElementsByTagName("piece");
           var book = xmlDoc.getElementsByTagName("book");
         var piecetable = `<tr><th>Piece's no</th><th>Title</th><th>Tonation</th><th>Level</th>
@@ -286,7 +290,16 @@ function loadXMLDoc(path) {
      /* for (j = 0; j < y[0].childNodes[0].getElementsByTagName("publisher").length; j++){ publishertable+="<tr><td>" +y[0].childNodes[0].getElementsByTagName("publisher") +
      "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
  */
-         for (j = 0; j < 6; j++){ publishertable+="<tr><td>" +y[0].getElementsByTagName("publisher")[36+j].getAttribute("id") +
+//tu próba nie robienia na piechotę, na podstawie id publishera.
+//jest publisher w każdym piece i w każdym book, ale jako atrybut mają nr.
+//publisher który jest dzieckiem elementu root ma atrybut id.
+         /* for (j = 0; j < 6; j++){ publishertable+="<tr><td>" +pub[j] +
+         //"</td><td>" +y[j].getElementsByTagName("namePublisher")[j].childNodes[0].nodeValue 
+         +"</td></tr>";} */
+
+//policzone na piechotę, ale przez to nie działa usuwanie publishera
+         for (j = 0; j < 6; j++){ publishertable+="<tr><td>" +
+         y[0].getElementsByTagName("publisher")[36+j].getAttribute("id") +
          "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
 
 
@@ -319,7 +332,7 @@ function loadXMLDoc(path) {
 
 
 }
-
+//zapisanie pliku
 function save() {
     //Serialize
     const serializer = new XMLSerializer();
@@ -335,6 +348,7 @@ function save() {
     fakeLink.download = 'changed.xml';
     fakeLink.click();
 }
+//miał wyświetlić na stronie, jeśli się coś usunie, modyfikuje albo dodaje, nie robi tego. Ale to jest istotne.
 function updateXML() {
     var i, j;
     //xmlDoc = this.responseXML;
@@ -426,7 +440,7 @@ function deleteBook(position){
     x.parentNode.removeChild(x);
     updateXML();
 }
-//usuwanie publisher nie działa, źle zrobiona pętla w loadXML
+//usuwanie publisher nie działa, źle zrobiona pętlę w loadXML
 function deletePublisher(position){
     var x = xmlDoc.getElementsByTagName("publisher").getAttribute("id")[position-1];
     x.parentNode.removeChild(x);
@@ -435,7 +449,7 @@ function deletePublisher(position){
 
 
 
-//modyfying composers
+//modyfying composers, Towim sposobem
 
 document.getElementById("modify_button_composer").onclick = function () {
     load_new_data_composer();
@@ -474,6 +488,7 @@ function get_new_velues_childen_composer(){
 }
 
 // ładuje dane z sekcji "Data modification" do xml_doc, jeżeli coś zostało wpisane (to ostatnie nie działa dla selectów)
+//ładuje composera
 function load_new_data_composer(){ 
     var modify_id_composer = document.getElementById("modify_id_composer").value;
     if (!modify_id_composer) return; 
@@ -498,6 +513,7 @@ function load_new_data_composer(){
 
 
 //modyfying pieces, nie działa
+//a tu pieces
 document.getElementById("modify_button_pieces").onclick = function () {
     load_new_data_pieces();
     updateXML();
@@ -569,7 +585,7 @@ function load_new_data_pieces(){
 
 
 
-
+//dodawanie nie działa, teoretycznie miał dodawać pierwszego composera na koniec tabeli
 function addComposer(){
 
     oldNode=xmlDoc.getElementsByTagName('composer')[0];
