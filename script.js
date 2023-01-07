@@ -231,10 +231,10 @@ function deletePublisher(position){
         if(publisher[j].getAttribute("nr") === (position))
         {alert("First delete pieces and books that contain this publisher.")
         return false;}
-        else {x.parentNode.removeChild(x);
+        else {x.parentNode.removeChild(x);updateXML();
         return true;}
     }
-    updateXML();
+    
 }
 
 
@@ -376,148 +376,145 @@ function idCheck(id){
     }
     return result;
 }
-function check(nazwaAtrybutu, porownywany) {
+
+//pieces
+
+document.getElementById("btnUpdatePiece").onclick = function () {
+
+    if(idCheckPiece(document.getElementById("iNr").value)) {
+    var val = document.getElementById("iPieceUpdate").value;
+    var composer = xmlDoc.getElementsByTagName("piece")[val];
+    var publisher = xmlDoc.getElementsByTagName("publisher")[val];
+    if(!(document.getElementById("iNr").value === null || document.getElementById("iNr").value === "" )) {
+        composer.attributes[0].nodeValue = document.getElementById("iNr").value;
+    }
+    if(!(document.getElementById("iname").value === null || document.getElementById("iname").value === "" )) {
+        composer.getElementsByTagName("name")[0].childNodes[0].nodeValue = document.getElementById("iname").value;
+    }
+    if(!(document.getElementById("itonation").value === null || document.getElementById("itonation").value === "" )) {
+        composer.getElementsByTagName("tonation")[0].childNodes[0].nodeValue = document.getElementById("itonation").value;
+    }
+    if(!(document.getElementById("ilevel").value === null || document.getElementById("ilevel").value === "" )) {
+        composer.getElementsByTagName("level")[0].childNodes[0].nodeValue = document.getElementById("ilevel").value;
+    }
+    if(!(document.getElementById("iinstruments").value === null || document.getElementById("iinstruments").value === "" )) {
+        composer.getElementsByTagName("instruments")[0].childNodes[0].nodeValue = document.getElementById("iinstruments").value;
+    }
+
+    if(!(document.getElementById("inr").value === null || document.getElementById("inr").value === "" )) {
+        if(!idCheckPublisher(document.getElementById("inr").value)) {
+            publisher.attributes[0].nodeValue = document.getElementById("inr").value;
+        }
+    else{
+        alert("Given number of publisher does not exist.");
+    }
+    }
+    if(!(document.getElementById("iprice").value === null || document.getElementById("iprice").value === "" )) {
+        publisher.getElementsByTagName("price")[0].childNodes[0].nodeValue = document.getElementById("iprice").value;
+    }
+    publisher.getElementsByTagName("price")[0].attributes[0].nodeValue = document.getElementById("icur").value;
+
+     }
+     else
+         alert("Given number exists.");
+         updateXML();
+         
+
+         
+
+}
+
+function idCheckPiece(id){
+    var x = xmlDoc.getElementsByTagName("piece");
+    var result = true;
+    // Start to fetch the data by using TagName
+    for (var i = 0; i < x.length; i++) {
+        if(x[i].getAttribute("nr") === id)
+            result = false;
+    }
+    return result;
+}
+
+//books
+document.getElementById("btnUpdateBook").onclick = function () {
+
+    if(idCheckBook(document.getElementById("iNo").value)) {
+    var val = document.getElementById("iBookUpdate").value;
+    var composer = xmlDoc.getElementsByTagName("book")[val];
+    if(!(document.getElementById("iNo").value === null || document.getElementById("iNo").value === "" )) {
+        composer.attributes[0].nodeValue = document.getElementById("iNo").value;
+    }
+    if(!(document.getElementById("icontent").value === null || document.getElementById("icontent").value === "" )) {
+        composer.getElementsByTagName("content")[0].childNodes[0].nodeValue = document.getElementById("icontent").value;
+    }
+    if(!(document.getElementById("iamount_of_pages").value === null || document.getElementById("iamount_of_pages").value === "" )) {
+        composer.getElementsByTagName("amount_of_pages")[0].childNodes[0].nodeValue = document.getElementById("iamount_of_pages").value;
+    }
+    if(!(document.getElementById("iISBN").value === null || document.getElementById("iISBN").value === "" )) {
+        composer.getElementsByTagName("ISBN")[0].childNodes[0].nodeValue = document.getElementById("iISBN").value;
+    }
+if(!(document.getElementById("inrbook").value === null || document.getElementById("inrbook").value === "" )) {
+         
+      if(idCheckPublisher(document.getElementById("inrbook").value)) {
+           composer.getElementsByTagName("publisher")[0].attributes[0].nodeValue = document.getElementById("inrbook").value;
+        }else{
+        alert("Given number of publisher does not exist.");
+    }
+    }
+    
+    if(!(document.getElementById("ipricebook").value === null || document.getElementById("ipricebook").value === "" )) {
+        composer.getElementsByTagName("publisher")[0].getElementsByTagName("price")[0].childNodes[0].nodeValue = document.getElementById("ipricebook").value;
+    }
+    composer.getElementsByTagName("publisher")[0].getElementsByTagName("price")[0].attributes[0].nodeValue = document.getElementById("icurbook").value;
+
+     }
+     else
+         alert("Given number exists.");
+         updateXML();
+         
+}
+
+function idCheckBook(id){
+    var x = xmlDoc.getElementsByTagName("book");
+    var result = true;
+    // Start to fetch the data by using TagName
+    for (var i = 0; i < x.length; i++) {
+        if(x[i].getAttribute("no") === id)
+            result = false;
+    }
+    return result;
+}
+
+//publisher
+document.getElementById("btnUpdatePublisher").onclick = function () {
+
+    if(idCheckPublisher(document.getElementById("iid").value)) {
+    var val = document.getElementById("iPublisherUpdate").value;
+    var composer = xmlDoc.getElementsByTagName("Publisher")[val];
+    if(!(document.getElementById("iid").value === null || document.getElementById("iid").value === "" )) {
+        composer.attributes[0].nodeValue = document.getElementById("iid").value;
+    }
+    if(!(document.getElementById("inamePublisher").value === null || document.getElementById("inamePublisher").value === "" )) {
+        composer.getElementsByTagName("namePublisher")[0].childNodes[0].nodeValue = document.getElementById("inamePublisher").value;
+    }
+    
+     }
+     else
+         alert("Given number exists.");
+         updateXML();
+         
+}
+function idCheckPublisher(id){
     var x = xmlDoc.getElementsByTagName("Publisher");
-    for (i = 0; i < x.length; i++) {
-            if(x[i].getAttribute(nazwaAtrybutu) === porownywany) {
-                alert("First delete pieces and books that contain this publisher.")
-                return false;
-            }
+    var result = true;
+    // Start to fetch the data by using TagName
+    for (var i = 0; i < x.length; i++) {
+        if(x[i].getAttribute("id") === id)
+            result = false;
     }
-    return true;
-}
-
-function checkElement(nazwaElementu, porownywany) {
-
-    var x = xmlDoc.getElementsByTagName("publisher");
-    for (i = 0; i < x.length; i++) {
-        if(x[i].getElementsByTagName(nazwaElementu)[0].childNodes[0].nodeValue === porownywany) {
-            alert("First delete pieces and books that contain this publisher.")
-            return false;
-        }
-    }
-    return true;
+    return result;
 }
 
 
 
 
-
-
-
-
-
-
-//modyfying composers, drugim (pierwszym na stronie) sposobem
-
-document.getElementById("modify_button_composer").onclick = function () {
-    load_new_data_composer();
-    updateXML();
-}
-
-// zwraca array referencji do atrybutów argumentu, elementów będących jego dziećmi i atrybutów tych elementów 
-function get_editable_composer_childen(composer) {
-    let stuff = [];
-    stuff.push(composer.attributes[0])
-    stuff.push(composer.attributes[1])
-    for (let i = 0; i < composer.children.length; i++) {
-        const element = composer.children[i];
-        if(element.innerHTML){
-            stuff.push(element);
-        }
-        if(element.attributes.length > 0){
-            stuff.push(element.attributes[0]);
-        }
-    }
-    return stuff;
-}
-
-// zwraca array referencji do podelementów "new_values" w htmlu, które nie są tekstem ani <br>
-// (czyli inputy i selecty)
-// output pasuje koresomnduje jeden do jednego z get_editable_game_childen()
-function get_new_velues_childen_composer(){
-    let stuff = [];
-    for (let i = 0; i < document.getElementById("new_values_composer").childNodes.length; i++) {
-        const element = document.getElementById("new_values_composer").childNodes[i];
-        if (element.nodeType == 1 && element.nodeName != "BR"){
-            stuff.push(element);
-        }
-    }
-    return stuff;
-}
-
-// ładuje dane z sekcji "Data modification" do xml_doc, jeżeli coś zostało wpisane (to ostatnie nie działa dla selectów)
-//ładuje composera
-function load_new_data_composer(){ 
-    var modify_id_composer = document.getElementById("modify_id_composer").value;
-    if (!modify_id_composer) return; 
-
-    for (let i = 0;; i++) {
-        const xml_element = get_editable_composer_childen(xml_doc.getElementsByTagName("composer")[modify_id_composer-1])[i]
-        const new_element = get_new_velues_childen_composer()[i]
-
-        if(!new_element) break;
-
-        if(new_element.value) {
-            xml_element.textContent = new_element.value
-        }
-    }
-}
-
-//modyfying pieces, nie działa
-//a tu pieces
-document.getElementById("modify_button_pieces").onclick = function () {
-    load_new_data_pieces();
-    updateXML();
-}
-
-// zwraca array referencji do atrybutów argumentu, elementów będących jego dziećmi i atrybutów tych elementów 
-function get_editable_piece_childen(piece) {
-    let stuff = [];
-    stuff.push(piece.attributes[0])
-    stuff.push(piece.attributes[1])
-    for (let i = 0; i < piece.children.length; i++) {
-        const element = piece.children[i];
-        if(element.innerHTML){
-            stuff.push(element);
-        }
-        if(element.attributes.length > 0){
-            stuff.push(element.attributes[0]);
-        }
-    }
-    return stuff;
-}
-
-// zwraca array referencji do podelementów "new_values" w htmlu, które nie są tekstem ani <br>
-// (czyli inputy i selecty)
-// output pasuje koresomnduje jeden do jednego z get_editable_game_childen()
-function get_new_velues_childen_pieces(){
-    let stuff = [];
-    for (let i = 0; i < document.getElementById("new_valuesa_pieces").childNodes.length; i++) {
-        const element = document.getElementById("new_values_pieces").childNodes[i];
-        if (element.nodeType == 1 && element.nodeName != "BR"){
-            stuff.push(element);
-        }
-    }
-    return stuff;
-}
-
-// ładuje dane z sekcji "Data modification" do xml_doc, jeżeli coś zostało wpisane (to ostatnie nie działa dla selectów)
-function load_new_data_pieces(){ 
-    var modify_id = document.getElementById("modify_id_pieces").value;
-    if (!modify_id) return; 
-
-    for (let i = 0;; i++) {
-
-        const xml_element = get_editable_piece_childen(xml_doc.getElementsByTagName("pieces:piece")[modify_id_pieces-1])[i]
-        const new_element = get_new_velues_childen_pieces()[i]
-
-        if(!new_element) break;
-
-        if(new_element.value) {
-            xml_element.textContent = new_element.value
-        }
-    }
-}
-/* function zmien(){
-} */

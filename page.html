@@ -48,61 +48,8 @@
 <button id="btnAddPublisher" class="button button1" >Add publisher</button><br>
 <hr>
 
-
-
-
-
-
-
-
-<hr>
-	<!--próba modyfikacji twoim sposobem-->
-	<h3>Composer modification</h3>
-	<button id="modify_button_composer" class="button button1" >Modify composers</button>
-	<input id="modify_id_composer" type ="number" min="0"> Choose number of composer to modify<br><br>
-	<div id="new_values_composer">
-		<input id="new_composer_id"> Enter new composer's id.<br>
-		<input id="new_composer_id"> Enter year of composer's birth.<br>
-		<input id="new_first_name"> Enter new first_name.<br>
-		<input id="new_surname"> Enter new surname.<br>
-		<input id="new_nationality"> Enter new nationality.<br>
-		<input id="new_lifespan"> Enter new lifespan.<br>
-		<input id="new_city"> Enter new city.<br>
-		
-	</div>
-	
-	<hr>
-
-	<h3>Pieces modification</h3>
-	<button id="modify_button_pieces" class="button button1" >Modify pieces</button>
-	<input id="modify_id_pieces" type ="number" min="0"> Choose number of piece to modify<br><br>
-	<div id="new_values_pieces">
-		<input id="new_game_id"> Enter new piece number.<br>
-		<input id="new_title"> Enter new title.<br>
-		<input id="new_tonation"> Enter new tonation.<br>
-		<select id="new_level">
-			<option>very hard</option>
-			<option>hard</option>
-			<option>medium</option>
-			<option>easy</option>
-			<option>very easy</option>
-		</select> Choose the level.<br>
-		<input id="new_instruments"> Enter new instruments. You can type as many as you want, use spaces instead of comas.<br>
-		<input id="new_publisher_id"> Enter new publisher's id.<br>
-		<input id="new_price" type="number" min="0"> 
-		<select id="new_currency">
-			<option>PLN</option>
-			<option>USD</option>
-			<option>EUR</option>
-		</select> Enter new price.<br>
-		
-
-	</div>
-	<hr>
-<!--modyfikacja sposobem gościa z ftimsu-->
-
-	MODYFIKACJA DANYCH<br>
-	<button id="btnUpdate" class="button button1" >Update date</button><br>
+<h3>Composer modification</h3>
+	<button id="btnUpdate" class="button button1" >Update data</button><br>
 	<input id="iComposerUpdate" type ="number">Give number of composer.<br><br>
 
 	<input id="iId" type="number"> Give new id of a composer.<br><br>
@@ -113,11 +60,61 @@
 		<option>male</option>
 		<option>female</option>
 	</select> Gender type<br>
-	<input id="ifirst_name"> Give the first name.<br>
-	<input id="isurname"> Give the surname.<br>
-	<input id="inationality"> Give the nationality.<br>
-	<input id="ilifespan" type="number" min="1">Give lifespan.<br>
-	<input id="icity">Give the city.<br>
+	<input id="ifirst_name"/> Give the first name.<br>
+	<input id="isurname"/> Give the surname.<br>
+	<input id="inationality"/> Give the nationality.<br>
+	<input id="ilifespan" type="number"/>Give lifespan.<br>
+	<input id="icity"/>Give the city.<br>
+	<hr>
+
+	<h3>Pieces modification</h3>
+	<button id="btnUpdatePiece" class="button button1" >Update data</button><br>
+	<input id="iPieceUpdate" type ="number">Give number of piece.<br><br>
+
+	<input id="iNr" type="number"> Give new number of piece.<br><br>
+
+	<input id="iname">Title of a piece.<br><br>
+	<input id="itonation">Tonation of a piece.<br><br>
+	<select id="ilevel">
+		<option>very hard</option>
+		<option>hard</option>
+		<option>medium</option>
+		<option>easy</option>
+		<option>very easy</option>
+	</select>Level<br>
+	
+	<input id="iinstruments">Instruments.<br><br>
+	<input id="inr" type="number">Number of a publisher.<br><br>
+	<input id="iprice" type="number">Price<br><br>
+	<select id="icur">
+		<option>PLN</option>
+		<option>USD</option>
+		<option>EUR</option>
+	</select>Currency<br>
+	<hr>
+	<h3>Books modification</h3>
+	<button id="btnUpdateBook" class="button button1" >Update data</button><br>
+	<input id="iBookUpdate" type ="number">Give number of book.<br><br>
+
+	<input id="iNo" type="number"> Give new number of book.<br><br>
+
+	<input id="icontent">Title of a book.<br><br>
+	<input id="iamount_of_pages" type="number">Amount of pages of a book.<br><br>
+	<input id="iISBN" type="number">ISBN number of book.<br><br>
+	<input id="inrbook" type="number">Number of a publisher.<br><br>
+	<input id="ipricebook" type="number">Price<br><br>
+	<select id="icurbook">
+		<option>PLN</option>
+		<option>USD</option>
+		<option>EUR</option>
+	</select>Currency<br>
+	<hr>
+	<h3>Publisher modification</h3>
+	<button id="btnUpdatePublisher" class="button button1" >Update data</button><br>
+	<input id="iPublisherUpdate" type ="number">Give number of publisher.<br><br>
+	<input id="iid" type="number"> Give new id of publisher.<br><br>
+
+	<input id="inamePublisher">Give new name of publisher.<br><br>
 
 	<script src="script.js"></script>
 </body>

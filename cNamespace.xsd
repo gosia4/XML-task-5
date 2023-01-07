@@ -111,7 +111,7 @@
 		<xs:restriction base="xs:string">
 			<!--<xs:pattern value="[a-z]+|[A-Z][a-z]*-minor|major" />
 			-->
-			<xs:minLength value="7"/>
+			<xs:minLength value="2"/>
 			<xs:maxLength value="9"></xs:maxLength>
 		</xs:restriction>
 	</xs:simpleType>
