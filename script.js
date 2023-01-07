@@ -245,12 +245,10 @@ document.getElementById("btnAddComposer").onclick = function () {
 }
 //dodaje pierwszego composera
 function addComposer(){
-
     oldNode=xmlDoc.getElementsByTagName('composer')[0];
     var count = xmlDoc.getElementsByTagName("composer").length;
     newNode=oldNode.cloneNode(true);
     var x = xmlDoc.getElementsByTagName("composer");
-
     // Start to fetch the data by using TagName
     for (i = 0; i < x.length; i++) {
         if (parseInt(x[i].getAttribute("id")) === count)
@@ -258,8 +256,8 @@ function addComposer(){
     }
     //var y=x[i].getAttribute("id");
     newNode.setAttribute("id", 1000+count);
-    xmlDoc.documentElement.getElementsByTagName("composer")[0].appendChild(newNode);
-
+    xmlDoc.getElementsByTagName("composers")[0].appendChild(newNode);
+    // xmlDoc.documentElement.getElementsByTagName("composer")[0].appendChild(newNode);
 }
 document.getElementById("btnAddPiece").onclick = function () {
     addPiece();
@@ -280,7 +278,7 @@ function addPiece(){
     }
 
     newNode.setAttribute("nr", count);
-    xmlDoc.documentElement.getElementsByTagName("piece")[0].appendChild(newNode);
+    xmlDoc.getElementsByTagName("pieces")[0].appendChild(newNode);
 
 }
 
@@ -322,63 +320,54 @@ function addPublisher(){
     }
 
     newNode.setAttribute("id", count);
-    xmlDoc.documentElement.getElementsByTagName("Publisher")[0].appendChild(newNode);
+    xmlDoc.getElementsByTagName("composers")[0].appendChild(newNode);
 }
 
 
 
 
 
-//modyfikacjia
-////
-//
-//
-//
-//aktualizacja potrzebna do modyfikacji
+//modyfikacja
 document.getElementById("btnUpdate").onclick = function () {
-    var val = document.getElementById("iComposerUpdate").value;
-    if(idCheck(document.getElementById("iId").value)) {
-        if(!(document.getElementById("iId").value === null || document.getElementById("iId").value === "" )){
-        xmlDoc.getElementsByTagName("composer")[val].setAttribute("id", document.getElementById("composer").value);
-		}
-        var select = document.getElementById('iBorn');
-        var value = select.options[select.selectedIndex].value;
-        xmlDoc.getElementsByTagName("composer")[val].setAttribute("born", value);
 
-        //if(!(document.getElementById("iPerson").value === null || document.getElementById("iPerson").value === "" )){
-            var select = document.getElementById('iGender');
-            var value = select.options[select.selectedIndex].value;
-            xmlDoc.getElementsByTagName("person")[val].setAttribute("gender", value);
+    if(idCheck(document.getElementById("iId").value)) {
+    var val = document.getElementById("iComposerUpdate").value;
+    var composer = xmlDoc.getElementsByTagName("composer")[val];
+    if(!(document.getElementById("ifirst_name").value === null || document.getElementById("ifirst_name").value === "" )) {
+        composer.getElementsByTagName("first_name")[0].childNodes[0].nodeValue = document.getElementById("ifirst_name").value;
+    }
+    if(!(document.getElementById("isurname").value === null || document.getElementById("isurname").value === "" )) {
+        composer.getElementsByTagName("surname")[0].childNodes[0].nodeValue = document.getElementById("isurname").value;
+    }
+    if(!(document.getElementById("inationality").value === null || document.getElementById("inationality").value === "" )) {
+        composer.getElementsByTagName("nationality")[0].childNodes[0].nodeValue = document.getElementById("inationality").value;
+    }
+    if(!(document.getElementById("ilifespan").value === null || document.getElementById("ilifespan").value === "" )) {
+        composer.getElementsByTagName("lifespan")[0].childNodes[0].nodeValue = document.getElementById("ilifespan").value;
+    }
+    if(!(document.getElementById("icity").value === null || document.getElementById("icity").value === "" )) {
+        composer.getElementsByTagName("city")[0].childNodes[0].nodeValue = document.getElementById("icity").value;
+    }
+    composer.getElementsByTagName("person")[0].attributes[0].nodeValue = document.getElementById("iGender").value;
+    if(idCheck(document.getElementById("iId").value)){
+        composer.attributes[0].nodeValue = document.getElementById("iId").value;
+    }
+    if(!(document.getElementById("iBorn").value === null || document.getElementById("iBorn").value === "" )) {
+        composer.attributes[1].nodeValue = document.getElementById("iBorn").value;
+    }
     
 
-        //}
-        if(!(document.getElementById("ifirst_name").value === null || document.getElementById("ifirst_name").value === "" )) {
-            xmlDoc.getElementsByTagName("first_name")[val].childNodes[0].nodeValue = document.getElementById("ifirst_name").value;
-        }
-        if(!(document.getElementById("isurname").value === null || document.getElementById("isurname").value === "" )) {
-            xmlDoc.getElementsByTagName("surname")[val].childNodes[0].nodeValue = document.getElementById("isurname").value;
-        }
-        if(!(document.getElementById("inationality").value === null || document.getElementById("inationality").value === "" )) {
-            xmlDoc.getElementsByTagName("nationality")[val].childNodes[0].nodeValue = document.getElementById("inationality").value;
-        }
-        if(!(document.getElementById("ilifespan").value === null || document.getElementById("ilifespan").value === "" )) {
-            xmlDoc.getElementsByTagName("lifespan")[val].childNodes[0].nodeValue = document.getElementById("ilifespan").value;
-        }
-        if(!(document.getElementById("icity").value === null || document.getElementById("icity").value === "" )) {
-            xmlDoc.getElementsByTagName("city")[val].childNodes[0].nodeValue = document.getElementById("icity").value;
-        }
-       
-        updateXML();
-    }
-    else
-        alert("Given id exists.");
+    updateXML();
+     }
+     else
+         alert("Given id exists.");
 
-        updateXML();
+         updateXML();
 
 }
 
 function idCheck(id){
-    var x = xmlDoc.getElementsByTagName("publisher");
+    var x = xmlDoc.getElementsByTagName("composer");
     var result = true;
     // Start to fetch the data by using TagName
     for (var i = 0; i < x.length; i++) {

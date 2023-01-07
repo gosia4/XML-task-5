@@ -116,7 +116,7 @@
 			<composer id="7854" born="1756">
 				<person gender="male"/>
 				<first_name>Wolfgang</first_name>
-				<first_name>Amadeusz</first_name>
+				<!-- <first_name>Amadeusz</first_name> -->
 				<surname>Mozart</surname>
 				<nationality>Austria</nationality>
 				<lifespan>35</lifespan>
@@ -215,7 +215,7 @@
 			<composer id="8674" born="1770">
 				<person gender="male"/>
 				<first_name>Ludwig</first_name>
-				<first_name>Van</first_name>
+				<!-- <first_name>Van</first_name> -->
 				<surname>Beethoven</surname>
 				<nationality>Garmany</nationality>
 				<lifespan>57</lifespan>
@@ -314,7 +314,7 @@
 			<composer id="4567" born="1685">
 				<person gender="male"/>
 				<first_name>Jan</first_name>
-				<first_name>Sebastian</first_name>
+				<!-- <first_name>Sebastian</first_name> -->
 				<surname>Bach</surname>
 				<nationality>Germany</nationality>
 				<lifespan>65</lifespan>
