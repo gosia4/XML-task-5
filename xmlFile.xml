@@ -124,7 +124,7 @@
 					<city>Salzburg</city>
 				</address>
 				<pieces>
-					<piece nr="1">
+					<piece nr="6">
 						<name>Symphony</name>
 						<tonation>g-minor</tonation>
 						<nr>40</nr>
@@ -134,7 +134,7 @@
 							<price cur="EUR">14.99</price>
 						</publisher>
 					</piece>
-					<piece nr="2">
+					<piece nr="7">
 						<name>Piano Concert</name>
 						<tonation>c-minor</tonation>
 						<nr>24</nr>
@@ -144,7 +144,7 @@
 							<price cur="EUR">9.39</price>
 						</publisher>
 					</piece>
-					<piece nr="3">
+					<piece nr="8">
 						<name>Sonate</name>
 						<tonation>f-minor</tonation>
 						<nr>4</nr>
@@ -154,7 +154,7 @@
 							<price cur="USD">3</price>
 						</publisher>
 					</piece>
-					<piece nr="4">
+					<piece nr="9">
 						<name>Symphony</name>
 						<tonation>Es-major</tonation>
 						<nr>5</nr>
@@ -164,7 +164,7 @@
 							<price cur="EUR">20.99</price>
 						</publisher>
 					</piece>
-					<piece nr="5">
+					<piece nr="10">
 						<name>Piano Concert</name>
 						<tonation>C-major</tonation>
 						<level>hard</level>
@@ -176,7 +176,7 @@
 				</pieces>
 
 				<books>
-					<book no="1">
+					<book no="5">
 						<content>Sonates</content>
 						<amount_of_pages>150</amount_of_pages>
 						<ISBN>927-95-790-3456-1</ISBN>
@@ -184,7 +184,7 @@
 							<price cur="PLN">89.99</price>
 						</publisher>
 					</book>
-					<book no="2">
+					<book no="6">
 						<content>Arias</content>
 						<amount_of_pages>82</amount_of_pages>
 						<ISBN>289-45-987-1098-2</ISBN>
@@ -192,7 +192,7 @@
 							<price cur="EUR">25.99</price>
 						</publisher>
 					</book>
-					<book no="3">
+					<book no="7">
 						<content>Songs</content>
 						<amount_of_pages>50</amount_of_pages>
 						<ISBN>251-95-999-5681-1</ISBN>
@@ -200,7 +200,7 @@
 							<price cur="PLN">39.99</price>
 						</publisher>
 					</book>
-					<book no="4">
+					<book no="8">
 						<content>Violin Concerts</content>
 						<amount_of_pages>200</amount_of_pages>
 						<ISBN>301-11-745-8951-1</ISBN>
@@ -223,7 +223,7 @@
 					<city>Bonn</city>
 				</address>
 				<pieces>
-					<piece nr="1">
+					<piece nr="11">
 						<name>Sonate</name>
 						<tonation>cis-minor</tonation>
 						<level>easy</level>
@@ -232,7 +232,7 @@
 							<price cur="PLN">15.99</price>
 						</publisher>
 					</piece>
-					<piece nr="2">
+					<piece nr="12">
 						<name>Symphony</name>
 						<tonation>c-minor</tonation>
 						<nr>5</nr>
@@ -242,7 +242,7 @@
 							<price cur="EUR">12.39</price>
 						</publisher>
 					</piece>
-					<piece nr="3">
+					<piece nr="13">
 						<name>Sonate</name>
 						<tonation>G-major</tonation>
 						<nr>8</nr>
@@ -253,7 +253,7 @@
 						</publisher>
 					</piece>
 
-					<piece nr="4">
+					<piece nr="14">
 						<name>String Quartet</name>
 						<tonation>D-major</tonation>
 						<nr>3</nr>
@@ -263,7 +263,7 @@
 							<price cur="PLN">19.99</price>
 						</publisher>
 					</piece>
-					<piece nr="5">
+					<piece nr="15">
 						<name>String Quartet</name>
 						<tonation>G-major</tonation>
 						<nr>3</nr>
@@ -275,7 +275,7 @@
 					</piece>
 				</pieces>
 				<books>
-					<book no="1">
+					<book no="9">
 						<content>Irish Songs</content>
 						<amount_of_pages>75</amount_of_pages>
 						<ISBN>444-95-745-1081-1</ISBN>
@@ -283,7 +283,7 @@
 							<price cur="PLN">39.99</price>
 						</publisher>
 					</book>
-					<book no="2">
+					<book no="10">
 						<content>Sonates</content>
 						<amount_of_pages>78</amount_of_pages>
 						<ISBN>412-55-987-1875-9</ISBN>
@@ -291,7 +291,7 @@
 							<price cur="PLN">41.99</price>
 						</publisher>
 					</book>
-					<book no="3">
+					<book no="11">
 						<content>Songs</content>
 						<amount_of_pages>140</amount_of_pages>
 						<ISBN>111-95-745-5781-6</ISBN>
@@ -299,7 +299,7 @@
 							<price cur="PLN">35.99</price>
 						</publisher>
 					</book>
-					<book no="4">
+					<book no="12">
 						<content>Variations</content>
 						<amount_of_pages>90</amount_of_pages>
 						<ISBN>101-78-245-0781-1</ISBN>
@@ -311,7 +311,7 @@
 			</composer>
 
 
-			<composer id="4567" born="1810">
+			<composer id="4567" born="1685">
 				<person gender="male"/>
 				<first_name>Jan</first_name>
 				<first_name>Sebastian</first_name>
@@ -322,7 +322,7 @@
 					<city>Eisenach</city>
 				</address>
 				<pieces>
-					<piece nr="1">
+					<piece nr="16">
 						<name>Violin Concerto</name>
 						<tonation>D-major</tonation>
 						<level>hard</level>
@@ -331,7 +331,7 @@
 							<price cur="PLN">18.99</price>
 						</publisher>
 					</piece>
-					<piece nr="2">
+					<piece nr="17">
 						<name>Orchestral Suite</name>
 						<tonation>C-major</tonation>
 						<nr>1</nr>
@@ -341,7 +341,7 @@
 							<price cur="EUR">14.39</price>
 						</publisher>
 					</piece>
-					<piece nr="3">
+					<piece nr="18">
 						<name>Brandenburg Concerto</name>
 						<tonation>G-major</tonation>
 						<nr>4</nr>
@@ -351,7 +351,7 @@
 							<price cur="USD">3.00</price>
 						</publisher>
 					</piece>
-					<piece nr="4">
+					<piece nr="19">
 						<name>Orchestral Suite</name>
 						<tonation>D-major</tonation>
 						<level>hard</level>
@@ -361,7 +361,7 @@
 							<price cur="PLN">19.99</price>
 						</publisher>
 					</piece>
-					<piece nr="5">
+					<piece nr="20">
 						<name>Allemande</name>
 						<tonation>g-minor</tonation>
 						<level>hard</level>
@@ -372,7 +372,7 @@
 					</piece>
 				</pieces>
 				<books>
-					<book no="1">
+					<book no="13">
 						<content>Cantatas</content>
 						<amount_of_pages>65</amount_of_pages>
 						<ISBN>311-95-745-0581-1</ISBN>
@@ -380,7 +380,7 @@
 							<price cur="EUR">19.99</price>
 						</publisher>
 					</book>
-					<book no="2">
+					<book no="14">
 						<content>Canons</content>
 						<amount_of_pages>56</amount_of_pages>
 						<ISBN>330-23-987-4343-2</ISBN>
@@ -389,7 +389,7 @@
 						</publisher>
 					</book>
 
-					<book no="3">
+					<book no="15">
 						<content>Motets</content>
 						<amount_of_pages>100</amount_of_pages>
 						<ISBN>341-95-000-0781-1</ISBN>
@@ -397,7 +397,7 @@
 							<price cur="PLN">49.99</price>
 						</publisher>
 					</book>
-					<book no="4">
+					<book no="16">
 						<content>Organ Works</content>
 						<amount_of_pages>320</amount_of_pages>
 						<ISBN>671-15-665-0781-1</ISBN>
@@ -409,24 +409,24 @@
 			</composer>
 
 
-			<publisher id="1">
+			<Publisher id="1">
 				<namePublisher>PWM</namePublisher>
-			</publisher>
-			<publisher id="2">
+			</Publisher>
+			<Publisher id="2">
 				<namePublisher>Universal Edition</namePublisher>
-			</publisher>
-			<publisher id="3">
+			</Publisher>
+			<Publisher id="3">
 				<namePublisher>Edition Peters</namePublisher>
-			</publisher>
-			<publisher id="4">
+			</Publisher>
+			<Publisher id="4">
 				<namePublisher>Zimmermann</namePublisher>
-			</publisher>
-			<publisher id="5">
+			</Publisher>
+			<Publisher id="5">
 				<namePublisher>Oxford University Press</namePublisher>
-			</publisher>
-			<publisher id="6">
+			</Publisher>
+			<Publisher id="6">
 				<namePublisher>Casa Ricordi</namePublisher>
-			</publisher>
+			</Publisher>
 		</composers>
 <!--	</p>
 </c>-->

@@ -16,11 +16,11 @@
 			<xs:sequence>
 				<xs:element name="documentInformation" type="c:documentInformationType" maxOccurs="1"/>
 				<xs:element name="composer" type="c:composerType" maxOccurs="unbounded"/>
-				<xs:element name="publisher" type="p:publisherType" maxOccurs="unbounded"/>
+				<xs:element name="Publisher" type="p:publisherType" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 		<xs:key name="publisher_id">
-				<xs:selector xpath="./p:publisher"/>
+				<xs:selector xpath="./p:Publisher"/>
 				<xs:field xpath="@id"/>
 			</xs:key>
 			<xs:keyref name="id_reference_piece" refer="p:publisher_id">

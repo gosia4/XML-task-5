@@ -72,10 +72,6 @@ document.getElementById("btnDeletePublisher").onclick = function () {
     deletePublisher(document.getElementById("iDeletePublisher").value);
 }
 
-/* document.getElementById("btnAddComposer").onclick = function () {
-    addComposer();
-    updateXML();
-} */
 
 
 
@@ -222,10 +218,7 @@ function loadXMLDoc(path) {
         `<tr><th>Composer's id</th><th>Date of birth</th><th>gender</th><th>firstName</th><th>Surname</th>
         <th>Nationality</th><th>Lifespan</th><th>City</th></tr>`;
         var x = xmlDoc.getElementsByTagName("composer");
-        var y = xmlDoc.getElementsByTagName("composers");
-
-       //var pub=xmlDoc.getElementsByTagName("publisher").getElementsById("id");
-
+        var publisher=xmlDoc.getElementsByTagName("Publisher");
           var piece = xmlDoc.getElementsByTagName("piece");
           var book = xmlDoc.getElementsByTagName("book");
         var piecetable = `<tr><th>Piece's no</th><th>Title</th><th>Tonation</th><th>Level</th>
@@ -240,16 +233,11 @@ function loadXMLDoc(path) {
                 x[i].getAttribute("id") + "</td><td>" +
                 x[i].getAttribute("born") + "</td><td>" +
                 x[i].getElementsByTagName("person")[0].getAttribute("gender")+ "</td><td>"+
-                x[i].getElementsByTagName("first_name")[0].childNodes[0].nodeValue + "</td><td>" +/* 
-                x[i].getElementsByTagName("first_name")[1].childNodes[0].nodeValue + "</td><td>" + */
+                x[i].getElementsByTagName("first_name")[0].childNodes[0].nodeValue + "</td><td>" +
                 x[i].getElementsByTagName("surname")[0].childNodes[0].nodeValue + "</td><td>" +
                 x[i].getElementsByTagName("nationality")[0].childNodes[0].nodeValue + "</td><td>" +
                 x[i].getElementsByTagName("lifespan")[0].childNodes[0].nodeValue + "</td><td>"+
-                x[i].getElementsByTagName("city")[0].childNodes[0].nodeValue +"</td></tr>" /* +
-                x[i].getElementsByTagName("name")[j].childNodes[0].nodeValue + "</td><td>" */ 
-                /* +
-                x[i].getElementsByTagName("composer")[0].childNodes[6].childNodes[0].childNodes[0].nodeValue + "</td><td>" */
-                /* +x[i].getElementsByTagName("name")[0].childNodes[0].childNodes[0].nodeValue + "</td><td>" */;
+                x[i].getElementsByTagName("city")[0].childNodes[0].nodeValue +"</td></tr>" ;
                
                   
                 
@@ -287,36 +275,11 @@ function loadXMLDoc(path) {
             book[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td></tr>";
          }
          
-     /* for (j = 0; j < y[0].childNodes[0].getElementsByTagName("publisher").length; j++){ publishertable+="<tr><td>" +y[0].childNodes[0].getElementsByTagName("publisher") +
-     "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
- */
-//tu próba nie robienia na piechotę, na podstawie id publishera.
-//jest publisher w każdym piece i w każdym book, ale jako atrybut mają nr.
-//publisher który jest dzieckiem elementu root ma atrybut id.
-         /* for (j = 0; j < 6; j++){ publishertable+="<tr><td>" +pub[j] +
-         //"</td><td>" +y[j].getElementsByTagName("namePublisher")[j].childNodes[0].nodeValue 
-         +"</td></tr>";} */
-
-//policzone na piechotę, ale przez to nie działa usuwanie publishera
-         for (j = 0; j < 6; j++){ publishertable+="<tr><td>" +
-         y[0].getElementsByTagName("publisher")[36+j].getAttribute("id") +
-         "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
-
-
-//liczenie na piechotę bez pętli for:
-         /* publishertable+="<tr><td>" +y[0].getElementsByTagName("publisher")[36].getAttribute("id") +
-         "</td><td>" +y[0].getElementsByTagName("namePublisher")[0].childNodes[0].nodeValue +"</td></tr>"+"<tr><td>"+
-         y[0].getElementsByTagName("publisher")[37].getAttribute("id") +
-         "</td><td>" +y[0].getElementsByTagName("namePublisher")[1].childNodes[0].nodeValue +"</td></tr>"+"<tr><td>"+
-         y[0].getElementsByTagName("publisher")[38].getAttribute("id") +
-         "</td><td>" +y[0].getElementsByTagName("namePublisher")[2].childNodes[0].nodeValue+"</td></tr>" +"<tr><td>"+
-         y[0].getElementsByTagName("publisher")[39].getAttribute("id") +
-         "</td><td>" +y[0].getElementsByTagName("namePublisher")[3].childNodes[0].nodeValue+"</td></tr>" +"<tr><td>"+
-         y[0].getElementsByTagName("publisher")[40].getAttribute("id") +
-         "</td><td>" +y[0].getElementsByTagName("namePublisher")[4].childNodes[0].nodeValue +"</td></tr>"+"<tr><td>"+
-         y[0].getElementsByTagName("publisher")[41].getAttribute("id") +
-         "</td><td>" +y[0].getElementsByTagName("namePublisher")[5].childNodes[0].nodeValue +"</td></tr>"; */
-       
+         for (j = 0; j < publisher.length; j++){ publishertable+="<tr><td>" +
+         publisher[j].getAttribute("id") + "</td><td>" +
+         publisher[j].getElementsByTagName("namePublisher")[0].childNodes[0].nodeValue + "</td></tr>" ;}
+         
+         
         document.getElementById("fileContent").innerHTML = table;
         document.getElementById("fileContent2").innerHTML = piecetable;
         document.getElementById("fileContent3").innerHTML = booktable;
@@ -356,7 +319,6 @@ function updateXML() {
         `<tr><th>Composer's id</th><th>Date of birth</th><th>gender</th><th>firstName</th><th>Surname</th>
         <th>Nationality</th><th>Lifespan</th><th>City</th></tr>`;
        var x = xmlDoc.getElementsByTagName("composer");
-    var y = xmlDoc.getElementsByTagName("composers");
       var piece = xmlDoc.getElementsByTagName("piece");
       var book = xmlDoc.getElementsByTagName("book");
     var piecetable = `<tr><th>Piece's no</th><th>Title</th><th>Tonation</th><th>Level</th>
@@ -364,15 +326,15 @@ function updateXML() {
      var booktable=`<tr><th>Book's no</th><th>Title</th><th>Amount of pages</th><th>ISBN</th>
      <th>PublisherNo</th><th>Price</th><th>Currency</th></tr>`;
      var publishertable=`<tr><th>Publisher's id</th><th>Name</th></tr>`;
-    
+     var publisher=xmlDoc.getElementsByTagName("Publisher");
+      
     // Start to fetch the data by using TagName
     for (i = 0; i < x.length; i++) {
         table += "<tr><td>" +
             x[i].getAttribute("id") + "</td><td>" +
             x[i].getAttribute("born") + "</td><td>" +
             x[i].getElementsByTagName("person")[0].getAttribute("gender")+ "</td><td>"+
-            x[i].getElementsByTagName("first_name")[0].childNodes[0].nodeValue + "</td><td>" +/* 
-            x[i].getElementsByTagName("first_name")[1].childNodes[0].nodeValue + "</td><td>" + */
+            x[i].getElementsByTagName("first_name")[0].childNodes[0].nodeValue + "</td><td>" +
             x[i].getElementsByTagName("surname")[0].childNodes[0].nodeValue + "</td><td>" +
             x[i].getElementsByTagName("nationality")[0].childNodes[0].nodeValue + "</td><td>" +
             x[i].getElementsByTagName("lifespan")[0].childNodes[0].nodeValue + "</td><td>"+
@@ -410,13 +372,10 @@ function updateXML() {
         .childNodes[0].nodeValue + "</td><td>"+
         book[j].getElementsByTagName("price")[0].getAttribute("cur")+ "</td></tr>";
      } 
-     for (j = 0; j < 6; j++){ publishertable+="<tr><td>" +y[0].getElementsByTagName("publisher")[36+j].getAttribute("id") +
-     "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
-
-
-     /* for (j = 0; j < y[0].childNodes[0].getElementsByTagName("publisher").length; j++){ publishertable+="<tr><td>" +y[0].childNodes[0].getElementsByTagName("publisher") +
-     "</td><td>" +y[0].getElementsByTagName("namePublisher")[0+j].childNodes[0].nodeValue +"</td></tr>";}
- */
+     for (j = 0; j < publisher.length; j++){ publishertable+="<tr><td>" +
+     publisher[j].getAttribute("id") + "</td><td>" +
+     publisher[j].getElementsByTagName("namePublisher")[0].childNodes[0].nodeValue + "</td></tr>" ;}
+     
     document.getElementById("afileContent").innerHTML = table;
     document.getElementById("afileContent2").innerHTML = piecetable;
     document.getElementById("afileContent3").innerHTML = booktable;
@@ -440,12 +399,74 @@ function deleteBook(position){
     x.parentNode.removeChild(x);
     updateXML();
 }
-//usuwanie publisher nie działa, źle zrobiona pętlę w loadXML
 function deletePublisher(position){
-    var x = xmlDoc.getElementsByTagName("publisher").getAttribute("id")[position-1];
-    x.parentNode.removeChild(x);
+    var publisher=xmlDoc.getElementsByTagName("publisher");
+    var x = xmlDoc.getElementsByTagName("Publisher")[position-1]; 
+    for (j = 0; j < publisher.length; j++){ 
+        if(publisher[j].getAttribute("nr") === (position))
+        {alert("First delete pieces and books that contain this publisher.")
+        return false;}
+        else {x.parentNode.removeChild(x);
+        return true;}
+    }
     updateXML();
 }
+
+
+
+
+
+
+function idCheck(id){
+    var x = xmlDoc.getElementsByTagName("publisher");
+    var result = true;
+    // Start to fetch the data by using TagName
+    for (var i = 0; i < x.length; i++) {
+        if(x[i].getAttribute("id") === id)
+            result = false;
+    }
+    return result;
+}
+function check(nazwaAtrybutu, porownywany) {
+    var x = xmlDoc.getElementsByTagName("Publisher");
+    for (i = 0; i < x.length; i++) {
+            if(x[i].getAttribute(nazwaAtrybutu) === porownywany) {
+                alert("First delete pieces and books that contain this publisher.")
+                return false;
+            }
+    }
+    return true;
+}
+
+function checkElement(nazwaElementu, porownywany) {
+
+    var x = xmlDoc.getElementsByTagName("publisher");
+    for (i = 0; i < x.length; i++) {
+        if(x[i].getElementsByTagName(nazwaElementu)[0].childNodes[0].nodeValue === porownywany) {
+            alert("First delete pieces and books that contain this publisher.")
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -569,23 +590,11 @@ function load_new_data_pieces(){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//dodawanie nie działa, teoretycznie miał dodawać pierwszego composera na koniec tabeli
+document.getElementById("btnAddComposer").onclick = function () {
+    addComposer();
+    updateXML();
+}
+//dodaje pierwszego composera
 function addComposer(){
 
     oldNode=xmlDoc.getElementsByTagName('composer')[0];
@@ -598,44 +607,77 @@ function addComposer(){
         if (parseInt(x[i].getAttribute("id")) === count)
             count++;
     }
+    //var y=x[i].getAttribute("id");
+    newNode.setAttribute("id", 1000+count);
+    xmlDoc.documentElement.getElementsByTagName("composer")[0].appendChild(newNode);
+
+}
+document.getElementById("btnAddPiece").onclick = function () {
+    addPiece();
+    updateXML();
+}
+
+function addPiece(){
+
+    oldNode=xmlDoc.getElementsByTagName('piece')[0];
+    var count = xmlDoc.getElementsByTagName("piece").length;
+    newNode=oldNode.cloneNode(true);
+    var x = xmlDoc.getElementsByTagName("piece");
+
+    // Start to fetch the data by using TagName
+    for (i = 0; i < x.length; i++) {
+        if (parseInt(x[i].getAttribute("nr")) === count)
+            count++;
+    }
+
+    newNode.setAttribute("nr", count);
+    xmlDoc.documentElement.getElementsByTagName("piece")[0].appendChild(newNode);
+
+}
+
+document.getElementById("btnAddBook").onclick = function () {
+    addBook();
+    updateXML();
+}
+function addBook(){
+
+    oldNode=xmlDoc.getElementsByTagName('book')[0];
+    var count = xmlDoc.getElementsByTagName("book").length;
+    newNode=oldNode.cloneNode(true);
+    var x = xmlDoc.getElementsByTagName("book");
+
+    // Start to fetch the data by using TagName
+    for (i = 0; i < x.length; i++) {
+        if (parseInt(x[i].getAttribute("no")) === count)
+            count++;
+    }
+
+    newNode.setAttribute("no", count);
+    xmlDoc.documentElement.getElementsByTagName("book")[0].appendChild(newNode);
+}
+document.getElementById("btnAddPublisher").onclick = function () {
+    addPublisher();
+    updateXML();
+}
+function addPublisher(){
+
+    oldNode=xmlDoc.getElementsByTagName('Publisher')[0];
+    var count = xmlDoc.getElementsByTagName("Publisher").length;
+    newNode=oldNode.cloneNode(true);
+    var x = xmlDoc.getElementsByTagName("Publisher");
+
+    // Start to fetch the data by using TagName
+    for (i = 0; i < x.length; i++) {
+        if (parseInt(x[i].getAttribute("id")) === count)
+            count++;
+    }
 
     newNode.setAttribute("id", count);
-    xmlDoc.documentElement.getElementsByTagName("composers")[0].appendChild(newNode);
-
-}
-function zmien(){
-
-
-}
-function idCheck(id){
-    var x = xmlDoc.getElementsByTagName("composer");
-    var result = true;
-    // Start to fetch the data by using TagName
-    for (var i = 0; i < x.length; i++) {
-        if(x[i].getAttribute("id") === id)
-            result = false;
-    }
-    return result;
-}
-function check(nazwaAtrybutu, porownywany) {
-    var x = xmlDoc.getElementsByTagName("composer");
-    for (i = 0; i < x.length; i++) {
-            if(x[i].getAttribute(nazwaAtrybutu) === porownywany) {
-                alert("Najpierw usuń dany atrybut z rekordów tabeli by usunąć tę kategorię ogólną.")
-                return false;
-            }
-    }
-    return true;
+    xmlDoc.documentElement.getElementsByTagName("Publisher")[0].appendChild(newNode);
 }
 
-function checkElement(nazwaElementu, porownywany) {
 
-    var x = xmlDoc.getElementsByTagName("composer");
-    for (i = 0; i < x.length; i++) {
-        if(x[i].getElementsByTagName(nazwaElementu)[0].childNodes[0].nodeValue === porownywany) {
-            alert("Najpierw usuń dany element z rekordów tabeli by usunąć tę kategorię ogólną.")
-            return false;
-        }
-    }
-    return true;
-}
+/* function zmien(){
+
+
+} */
